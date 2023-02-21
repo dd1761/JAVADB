@@ -38,7 +38,7 @@ public class Student {
 			} else if (number == 1) {
 				insertArticle();
 			} else if (number == 2) {
-				selectArticle();
+
 			} else if (number == 3) {
 
 			}
@@ -126,7 +126,6 @@ public class Student {
 	}
 
 	public void selectArticle() {
-	
 		String name = null;
 		while (true) {
 			System.out.println("****************");
@@ -141,31 +140,11 @@ public class Student {
 				break;
 			}
 			else if(number == 1) {
-				System.out.print("검색할 이름 입력 (1개 글자): ");
-				name = scanner.next();
-			}
-			else if(number == 2) {
 				System.out.print("검색할 이름 입력 : ");
 				name = scanner.next();
 			}
-			getConnection();
-			String sql = "select * from student2 where name like ?";
-			try {
-				pstmt = conn.prepareStatement(sql);	//생성
-				//?에 데이터 대입
-				pstmt.setString(1, "%"+name+"%");
+			else if(number == 2) {
 				
-				int su = pstmt.executeUpdate(); //실행 - 개수 리턴
-				System.out.println(su + " 행을 찾았습니다.");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}	finally {
-				try {
-					if(pstmt != null) pstmt.close();
-					if(conn != null) conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 	}
