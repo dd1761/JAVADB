@@ -126,8 +126,8 @@ public class Student {
 	}
 
 	public void selectArticle() {
+	
 		String name = null;
-		String sql = null;
 		while (true) {
 			System.out.println("****************");
 			System.out.println("1. 이름 검색 (1개 글자가 포함된 이름은 모두 검색)");
@@ -141,46 +141,26 @@ public class Student {
 				break;
 			}
 			else if(number == 1) {
-				System.out.print("검색할 이름 입력: ");
+				System.out.print("검색할 이름 입력 (1개 글자): ");
 				name = scanner.next();
-				
-				
 			}
 			else if(number == 2) {
-				sql = "select * from student2";
+				System.out.print("검색할 이름 입력 : ");
+				name = scanner.next();
 			}
 			getConnection();
-			
-			if( number == 1) {
-				sql = "select * from student2 where name like ?";
-			}
-			else if(number == 2) {
-				sql = "select * from student2";
-			}
-			
-			
+			String sql = "select * from student2 where name like ?";
 			try {
 				pstmt = conn.prepareStatement(sql);	//생성
 				//?에 데이터 대입
-				if(number == 1) {
-					pstmt.setString(1, "%"+name+"%");
-				}
-				rs = pstmt.executeQuery();
+				pstmt.setString(1, "%"+name+"%");
 				
-				while(rs.next()) {
-					System.out.print("이름 = " + rs.getString("name") + "\t");
-					
-					if(rs.getInt("code") == 1) {
-						System.out.println("학번 = " + rs.getString("value"));
-					}
-					else if(rs.getInt("code") == 2) {
-						System.out.println("과목 = " + rs.getString("value"));
-					}
-					else if(rs.getInt("code") == 3) {
-						System.out.println("부서 = " + rs.getString("value"));
-					}
-	
-				}
+			
+				int su = pstmt.executeUpdate(); //실행 - 개수 리턴
+				System.out.println(su + " 행을 찾았습니다.");
+				System.out.println(rs.getString("name"));
+				System.out.println(
+						);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}	finally {

@@ -171,15 +171,14 @@ public class Student {
 					System.out.print("이름 = " + rs.getString("name") + "\t");
 					
 					if(rs.getInt("code") == 1) {
-						System.out.println("학번 = " + rs.getString("value"));
+						System.out.print("학번 = " + rs.getString("value"));
 					}
 					else if(rs.getInt("code") == 2) {
-						System.out.println("과목 = " + rs.getString("value"));
+						System.out.print("과목 = " + rs.getString("value"));
 					}
 					else if(rs.getInt("code") == 3) {
-						System.out.println("부서 = " + rs.getString("value"));
+						System.out.print("부서 = " + rs.getString("value"));
 					}
-	
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

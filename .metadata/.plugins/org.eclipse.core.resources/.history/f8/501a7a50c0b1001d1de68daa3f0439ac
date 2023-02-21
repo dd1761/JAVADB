@@ -167,20 +167,10 @@ public class Student {
 				}
 				rs = pstmt.executeQuery();
 				
-				while(rs.next()) {
-					System.out.print("이름 = " + rs.getString("name") + "\t");
-					
-					if(rs.getInt("code") == 1) {
-						System.out.println("학번 = " + rs.getString("value"));
-					}
-					else if(rs.getInt("code") == 2) {
-						System.out.println("과목 = " + rs.getString("value"));
-					}
-					else if(rs.getInt("code") == 3) {
-						System.out.println("부서 = " + rs.getString("value"));
-					}
-	
-				}
+				int su = pstmt.executeUpdate(); //실행 - 개수 리턴
+				System.out.println(su + " 행을 찾았습니다.");
+				System.out.println(rs.getString("name"));
+				System.out.println();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}	finally {
