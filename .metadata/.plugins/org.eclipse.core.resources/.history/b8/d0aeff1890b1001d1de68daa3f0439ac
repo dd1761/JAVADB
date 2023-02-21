@@ -1,0 +1,32 @@
+package dbtest.dao;
+
+import java.sql.Connection;
+
+public class InsertMain {
+	private Connection conn;
+	
+	
+	public InsertMain() {
+		
+		//driver loading
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //Class타입으로 생성
+			System.out.println("driver loading 성공");
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		} 
+		//접속은 한번만 하는것이 아니기 때문에 생성자에서 하면 안됨.
+	}
+	
+	public void getConnection() {
+		
+	}
+
+	public static void main(String[] args) {
+		InsertMain im = new InsertMain();
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package dbtest.dao;
+
+public class UpdateMain {
+
+	public static void main(String[] args) {
+		
+	}
+
+}
+
+/*
+검색 할 이름 입력 : 홍
+
+홍이 들어간 레코드를 나이를 1증가, 키도 1증가 하시오
+
+
+*/
