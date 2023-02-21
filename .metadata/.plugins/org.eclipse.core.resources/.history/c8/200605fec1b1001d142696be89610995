@@ -194,14 +194,14 @@ public class Student {
 		String name = scanner.next();
 
 		getConnection();
-		String sql = "DELETE STUDENT2 WHERE NAME=?";
+		String sql = "DELETE STUDENT WHERE NAME=";
 		try {
 			pstmt = conn.prepareStatement(sql); // 생성
 			// ?에 데이터 대입
 			pstmt.setString(1, name);
 
 			int su = pstmt.executeUpdate(); // 실행 - 개수 리턴
-			System.out.println(su + " 행이(가) 삭제되었습니다.");
+			System.out.println(su + " 행이(가) 삽입되었습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -194,7 +194,7 @@ public class Student {
 		String name = scanner.next();
 
 		getConnection();
-		String sql = "DELETE STUDENT2 WHERE NAME=?";
+		String sql = "DELETE STUDENT WHERE NAME=";
 		try {
 			pstmt = conn.prepareStatement(sql); // 생성
 			// ?에 데이터 대입
