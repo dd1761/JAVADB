@@ -1354,3 +1354,6 @@ org.eclipse.core.runtime.CoreException: Could not load the Tomcat server configu
 
 !ENTRY org.eclipse.jst.server.tomcat.core 4 0 2023-02-22 14:42:24.839
 !MESSAGE The Tomcat server configuration at \Servers2\Tomcat v9.0 Server at localhost-config is missing. Check the server for errors.
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2023-02-22 16:00:34.614
+!MESSAGE Port 8080 required by Tomcat v9.0 Server at localhost is already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
