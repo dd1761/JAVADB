@@ -5,11 +5,22 @@
 <title>Insert title here</title>
 <style type="text/css">
 td {
-	color: red;
+	color: blue;
 }
 
 h3 {
 	color: violet;
+}
+
+#nameDiv {
+	font-size: 8pt;
+	color: red;
+}
+
+#ageDiv {
+	font-size: 8pt;
+	color: red;
+	font-weight: bold;
 }
 </style>
 
@@ -42,11 +53,23 @@ h3 {
 	</form>
 	<script type="text/javascript">
 	<!-- 동적 처리. 다른 애들이 다 실행 된 후에 실행됨. 그래서 원래 원칙대로면 위에 쓰는게 맞는데 속도 때문에 /body 위 아래쪽에 놓는다.  -->
+		/*
 		function check() {
+		if (document.paramForm.name.value == "")
+		alert("이름을 입력하세요 ");
+		else if (document.paramForm.age.value == "")
+		alert("나이를 입력하세요 ")
+		else
+		document.paramForm.submit();
+		}
+		 */
+		function check() {
+			 document.getElementById("nameDiv").innerText = "";
+			 document.getElementById("ageDiv").innerText = "";
 			if (document.paramForm.name.value == "")
-				alert("이름을 입력하세요 ");
+				document.getElementById("nameDiv").innerText = "이름 입력";
 			else if (document.paramForm.age.value == "")
-				alert("나이를 입력하세요 ")
+				document.getElementById("ageDiv").innerText = "나이 입력";
 			else
 				document.paramForm.submit();
 		}
