@@ -12,15 +12,17 @@ h3 {
 	color: violet;
 }
 </style>
+
+
 </head>
 <body>
-	<form name="paramForm" method="post" action="http://www.naver.com">
+	<form name="paramForm" method="post" action="https://www.naver.com">
 		<h3>연령제한</h3>
 
-		<table border="1" cellpadding="5" cellspacing="0">
+		<table border="1" cellpadding="10" cellspacing="0">
 			<tr>
 				<td width="70" align="center">이름</td>
-				<td><input type="text" name="name" placeholder="이름을 입력하세요">
+				<td><input type="text" name="name" placeholder="이름을 입력하세요 ">
 					<div id="nameDiv"></div></td>
 			</tr>
 
@@ -31,21 +33,23 @@ h3 {
 			</tr>
 
 			<tr>
-				<td colspan="2" align="center">
-					<input type="button" value="보내기" onclick="javascript:check()">
-					<input type="reset" value="취소"></td>
+				<td colspan="2" align="center"><input type="button"
+					value="보내기 " onclick="javascript:check()"> <!-- on: ~할 때 이벤트   , 보내기 버튼을 노르면 자바스크립트 check()함수를 호출해-->
+					<input type="reset" value="취소 "></td>
 			</tr>
 
 		</table>
 	</form>
 	<script type="text/javascript">
-		if(document.paramForm.name.value == ""){
-			alter("이름을 입력하세요")
+	<!-- 동적 처리. 다른 애들이 다 실행 된 후에 실행됨. 그래서 원래 원칙대로면 위에 쓰는게 맞는데 속도 때문에 /body 위 아래쪽에 놓는다.  -->
+		function check() {
+			if (document.paramForm.name.value == "")
+				alert("이름을 입력하세요 ");
+			else if (document.paramForm.age.value == "")
+				alert("나이를 입력하세요 ")
+			else
+				document.paramForm.submit();
 		}
 	</script>
-	
-		
-	</script>
-
 </body>
 </html>
