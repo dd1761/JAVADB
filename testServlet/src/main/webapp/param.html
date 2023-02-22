@@ -64,6 +64,8 @@ h3 {
 		}
 		 */
 		function check() {
+			 document.getElementById("nameDiv").innerText = "";
+			 document.getElementById("ageDiv").innerText = "";
 			if (document.paramForm.name.value == "")
 				document.getElementById("nameDiv").innerText = "이름 입력";
 			else if (document.paramForm.age.value == "")
