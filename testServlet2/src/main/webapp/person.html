@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="personForm" method="get" action="https://www.naver.com">
+	<form name="personForm" method="get" action="http://localhost:8080/testServlet2/PersonServlet">
 
 
 		<table border="1" cellpadding="10" cellspacing="0">
 			<tr>
-				<th width="70" align="center">ÀÌ¸§</th>
-				<td><input type="text" name="name" placeholder="ÀÌ¸§ ÀÔ·Â">
+				<th width="70" align="center">ì´ë¦„</th>
+				<td><input type="text" name="name" placeholder="ì´ë¦„ ì…ë ¥">
 					<div id="nameDiv"></div></td>
 
 			</tr>
 			<tr>
-				<th width="70" align="center">¼ºº°</th>
+				<th width="70" align="center">ì„±ë³„</th>
 
 				<td>
 					<fieldset>
-					<legend>¼ºº°</legend>
+					<legend>ì„±ë³„</legend>
 						<input type="radio" name="gender" id="gender_m" value="0" checked="checked">
-							<label for="gender_m">³²ÀÚ</label> 
+							<label for="gender_m">ë‚¨ì</label> 
 							&nbsp;
 						<input type="radio" name="gender" id="gender_w" value="1">
-							<label for="gender_w">¿©ÀÚ</label>
+							<label for="gender_w">ì—¬ì</label>
 					</fieldset>
 				</td>
 			</tr>
 			
 			<tr>
-				<th width="70" align="center">»ö±ò</th>
+				<th width="70" align="center">ìƒ‰ê¹”</th>
 				<td>
 					<select name="color" style="width:100px;">
-						<optiongroup label="»ö±ò">
-							<option value="red">»¡°­</option>
-							<option value="green">ÃÊ·Ï</option>
-							<option value="blue">ÆÄ¶û</option>
-							<option value="magenta">º¸¶ó</option>
-							<option value="cyan">ÇÏ´Ã</option>
+						<optiongroup label="ìƒ‰ê¹”">
+							<option value="red">ë¹¨ê°•</option>
+							<option value="green">ì´ˆë¡</option>
+							<option value="blue">íŒŒë‘</option>
+							<option value="magenta">ë³´ë¼</option>
+							<option value="cyan">í•˜ëŠ˜</option>
 						</optiongroup>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<th width="70" align="center">Ãë¹Ì</th>
+				<th width="70" align="center">ì·¨ë¯¸</th>
 				<td>
-					<input type="checkbox" id="hobby_read" name=hobby value="µ¶¼­"><label for="hobby_read">µ¶¼­</label>
-					<input type="checkbox" id="hobby_movie" name=hobby value="¿µÈ­"><label for="hobby_movie">¿µÈ­</label> 
-					<input type="checkbox" id="hobby_music" name=hobby value="À½¾Ç"><label for="hobby_music">À½¾Ç</label> 
-					<input type="checkbox" id="hobby_game" name=hobby value="°ÔÀÓ"><label for="hobby_game">°ÔÀÓ</label> 
-					<input type="checkbox" id="hobby_show" name=hobby value="¼îÇÎ"><label for="hobby_show">¼îÇÎ</label>
+					<input type="checkbox" id="hobby_read" name=hobby value="ë…ì„œ"><label for="hobby_read">ë…ì„œ</label>
+					<input type="checkbox" id="hobby_movie" name=hobby value="ì˜í™”"><label for="hobby_movie">ì˜í™”</label> 
+					<input type="checkbox" id="hobby_music" name=hobby value="ìŒì•…"><label for="hobby_music">ìŒì•…</label> 
+					<input type="checkbox" id="hobby_game" name=hobby value="ê²Œì„"><label for="hobby_game">ê²Œì„</label> 
+					<input type="checkbox" id="hobby_show" name=hobby value="ì‡¼í•‘"><label for="hobby_show">ì‡¼í•‘</label>
 				</td>
 
 			</tr>
 			<tr>
-				<td width="70" align="center">°ú¸ñ</td>
+				<th width="70" align="center">ê³¼ëª©</th>
 
 				<td>
-					<select id="" multiple="multiple" size="5" style="width: 100px;">
+					<select id="" name="subject" multiple="multiple" size="5" style="width: 100px;">
 						<option value="Java" selected="selected">Java</option>
 						<option value="Servlet">Servlet</option>
 						<option value="JSP">JSP</option>
@@ -70,11 +70,31 @@
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="SEND">
+					<input type="button" value="SEND" onclick="check()">
 					<input type="reset" value="CANCEL">
 				</td>
 			</tr>
 		</table>
 	</form>
+	<script type="text/javascript">
+		function check(){
+			if(document.personForm.name.value == "") {
+				alert("ì´ë¦„ ì…ë ¥");
+				return;
+			}
+			var check = document.getElementsByName("hobby");
+			var count=0;
+			for(i = 0; i < check.length; i++){
+				if(check[i].checked) count++;
+			}//for
+			
+			if(count == 0){
+				alert("ì·¨ë¯¸ë¥¼ ì„ íƒ");
+				return;
+			}
+			document.personForm.submit();	
+		}
+			
+	</script>
 </body>
 </html>
