@@ -21,7 +21,7 @@ public class HelloServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet()");
 		
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		
 //		1.
@@ -35,7 +35,8 @@ public class HelloServlet extends HttpServlet {
 		PrintWriter out = response.getWriter(); // 아웃객체를 response로 생성하여 브라우저(web)으로 감.
 		out.println("<html>");
 		out.println("<body>");
-		out.println("Hello Servlet");
+		out.println("Hello Servlet!!<br>");
+		out.println("안녕하세요 서블릿!!");
 		out.println("</body>");
 		out.println("</html>");
 	}
