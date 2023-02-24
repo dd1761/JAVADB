@@ -27,7 +27,7 @@ div{
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input type="text" name="id" size="30"  placeholder="아이디 입력">
+					<input type="text" name="id" id="id" size="30"  placeholder="아이디 입력">
 					<div id="idDiv"></div>
 				</td>
 			</tr>
@@ -35,7 +35,7 @@ div{
 			<tr>
 				<th>비밀번호</th>
 				<td>
-					<input type="password" name="pwd" size="40">
+					<input type="password" name="pwd" id="pwd" size="40">
 					<div id="pwdDiv"></div>
 				</td>
 			</tr>
@@ -43,7 +43,7 @@ div{
 			<tr>
 				<th>재확인</th>
 				<td>
-					<input type="password" name="repwd" size="40">
+					<input type="password" name="repwd" id="repwd" size="40">
 				</td>
 			</tr>
 			
@@ -66,7 +66,7 @@ div{
 					<input type="text" name="email1" style="width: 120px;">
 					@
 					<input type="text" name="email2" style="width: 120px;" onchange="select()"> <!-- 자바스크립트 함수 호출 -->
-					<select name="email3" style="width:120px;">
+					<select name="email3" style="width:120px;" onchange="select()">
 							<option value="">직접입력</option>
 							<option value="naver">naver.com</option>
 							<option value="gmail">gmail.com</option>
@@ -111,16 +111,10 @@ div{
 			</tr>
 		</table>
 	</form>
-<script type="text/javascript">
-function select(){
-	document.writeForm.email2.value = document.writeForm.email3.value;
-		}
-function checkWrite(){
-		//if(document.writeForm.name.value == "") alert("이름 입력하세요")
-		//if(document.getElementById("name").value =="") alert("이름 입력하세요")
-		if(document.getElementById("name").value == "")
-			document.getElementById("nameDiv").innerText="이름 입력";
-}
+<!-- 절대주소 -->
+<script type="text/javascript" src="../js/member.js"> /* 상대주소 */
+/* <script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js"> */
+
 </script>
 
 </body>
