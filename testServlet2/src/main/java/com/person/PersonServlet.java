@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/PersonServlet")
 public class PersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -35,9 +35,8 @@ public class PersonServlet extends HttpServlet {
 		else if(gender == 1) {
 			out.println("<li> 성별 : 여자 </li>");
 		}
-		if(color.equals(color)) {
-			out.println("<li> 색깔 : " + color + "</li>");
-		}
+
+		out.println("<li> 색깔 : " + color + "</li>");
 		
 		out.println("<li> 취미 : ");
 		for(int i = 0; i < hobby.length; i++) {
@@ -50,6 +49,11 @@ public class PersonServlet extends HttpServlet {
 				out.println(subject[i]);
 			
 		}
+		
+//		for(String data : subject) {
+//			out.println(data);
+//		}
+		
 		out.println("</h3>");
 		out.println("<input type='button' value='뒤로' onclick='javascript:history.go(-1)'>");
 		out.println("<input type='button' value='뒤로' onclick=location.href='http://localhost:8080/testServlet/calc/input.html'>");
