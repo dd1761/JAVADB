@@ -29,6 +29,7 @@ public class PersonServlet extends HttpServlet {
 		out.println("<h3>");
 		out.println("<ul>");
 		out.println("<li>이름 : " + name + "</li>");
+		
 		if(gender == 0) {
 			out.println("<li> 성별 : 남자 </li>" );
 		}
