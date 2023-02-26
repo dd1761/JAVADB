@@ -8,7 +8,7 @@ function checkWrite(){
 		document.getElementById("nameDiv").innerText = "";
 		document.getElementById("idDiv").innerText = "";
 		document.getElementById("pwdDiv").innerText = "";
-		
+		//
 		if(document.getElementById("name").value == "")
 			document.getElementById("nameDiv").innerText="이름 입력";
 		else if(document.getElementById("id").value == "")
