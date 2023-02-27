@@ -28,6 +28,9 @@ function checkLogin() {
 		document.getElementById("idDiv").innerText = "아이디 입력";
 	else if (document.getElementById("pwd").value == "")
 		document.getElementById("pwdDiv").innerText = "비밀번호 입력";
+	else{
+		
+	}
 }
 
 /* Daum 우편번호 */
