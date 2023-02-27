@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import member.bean.MemberDTO;
+
 public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -36,8 +38,49 @@ public class MemberDAO {
 		}
 	}
 	
-	public void memberWrite() {
-		String sql = "insert";
+	public int memberWrite(MemberDTO memberDTO) {
+		int su = 0;
+		
+		this.getConnection();	//DB접속
+		String sql = "insert into 테이블명 values(?,?,?,?,?,?,?,?,?,?,?,?,sysdate)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			//?에 데이터 주입
+			pstmt.setString(1, memberDTO.getName());
+			pstmt.setString(2, memberDTO.getId());
+			pstmt.setString(3, memberDTO.getPwd());
+			pstmt.setString(4, memberDTO.getGender());
+			pstmt.setString(5, memberDTO.getEmail1());
+			pstmt.setString(6, memberDTO.getEmail2());
+			pstmt.setString(7, memberDTO.getTel1());
+			pstmt.setString(8, memberDTO.getTel2());
+			pstmt.setString(9, memberDTO.getTel3());
+			pstmt.setString(10, memberDTO.getZipcode());
+			pstmt.setString(11, memberDTO.getAddr1());
+			pstmt.setString(12, memberDTO.getAddr2());
+			
+			su = pstmt.executeUpdate();//실행 - 개수 리턴
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			MemberDAO.close(conn, pstmt);
+		}
+		
+		return su;
+	}
+
+	private static void close(Connection conn, PreparedStatement pstmt) {
+		try {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
