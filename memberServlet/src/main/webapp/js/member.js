@@ -29,7 +29,15 @@ function checkLogin() {
 	else if (document.getElementById("pwd").value == "")
 		document.getElementById("pwdDiv").innerText = "비밀번호 입력";
 	else{
-		
+		if(document.getElementById("id").value == memberDTO.getID()){
+			if(document.getElementById("pwd").value == memberDTO.getPwd()){
+				document.loginForm.submit();
+			}
+			else{
+				
+			}
+			
+		}
 	}
 }
 

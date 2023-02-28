@@ -5,8 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="writeForm" method="post" action="http://localhost:8080/memberServlet/member/writeForm.html">
-		<form name="loginForm" method="post" action="http://localhost:8080/memberServlet/loginForm">
+	<form name="loginForm" method="post" action="http://localhost:8080/memberServlet/member/LoginServlet">
 		<table border="1" cellpadding="5" cellspacing="0">
 		<tr>
 				<th>아이디</th>
@@ -25,13 +24,12 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="로그인" onclick="document.loginForm.submit()">
+					<button type="button" onclick="checkLogin()">로그인</button>
 					<input type="button" value="회원가입" onclick="document.writeForm.submit()">
 				</td>
 			</tr>
 		</table>
 		</form>
-	</form>
 <script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js">
 </script>
 </body>
