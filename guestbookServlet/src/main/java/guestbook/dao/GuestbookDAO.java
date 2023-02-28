@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import guestbook.bean.GuestbookDTO;
 
 public class GuestbookDAO {
+	private static GuestbookDAO guestbookDAO = new GuestbookDAO();
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -18,7 +19,6 @@ public class GuestbookDAO {
 	private String username = "c##java";
 	private String password = "1234";
 	
-	private static GuestbookDAO guestbookDAO = new GuestbookDAO();
 	
 	public static GuestbookDAO getInstance() {
 		
@@ -44,11 +44,37 @@ public class GuestbookDAO {
 		}
 	}
 	
-	public int guestbook(GuestbookDTO guestbookDTO) {
-		 int su = 0;
+	public static void close(Connection conn, PreparedStatement pstmt) {
+		try {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+			if(rs != null) 
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void guestbookWrite(GuestbookDTO guestbookDTO) {
+		String sql = "insert into guestbook values(seq_guestbook.nextval,?,?,?,?,?,sysdate)";
 		 
 		 this.getConnection();
-		 String sql = "insert into guestbook values(?,?,?,?,?,sysdate)";
+		 
 		 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -59,13 +85,13 @@ public class GuestbookDAO {
 			pstmt.setString(4, guestbookDTO.getSubject());
 			pstmt.setString(5, guestbookDTO.getContent());
 			
-			su = pstmt.executeUpdate();
+			pstmt.executeUpdate();	//오라클 실행
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+		} finally {
+			GuestbookDAO.close(conn, pstmt);
 		}
 		 
-		 
-		 return su;
 	}
 }
