@@ -20,10 +20,10 @@ public class WriteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		//데이터
 		
-		String name = request.getParameter("name");//이름 속성을 얻어온다. 
+		//데이터
 		//이름, 아이디, 성별, 이메일2, 휴대폰3, 주소3
+		String name = request.getParameter("name");//이름 속성을 얻어온다. 
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String gender = request.getParameter("gender");
