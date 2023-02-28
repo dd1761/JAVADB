@@ -3,12 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	textarea{
+		height:500px;
+		width:700px;
+	}
+</style>
 </head>
 <body>
-
-	<table>
-	
-	</table>
-
+	<form name="writeForm" method="post" action="http://localhost:8080/memberServlet/WriteServlet">
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<th>작성자</th>
+				<td>
+					<input type="text" name="name" id="name"  placeholder="작성자 입력" size="30">
+					<div id="nameDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>
+					<input type="text" name="email" id="email"  placeholder="이메일 입력" size="60" >
+					<div id="emailDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<th>홈페이지</th>
+				<td>
+					<input type="text" name="homepage" id="email" size="70" value="http://">
+					<div id="homepageDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="text" name="subject" id="subject"  placeholder="제목입력" size="100" >
+					<div id="subjectDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+					<textarea id="contentDiv" name="contentDiv"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="글작성" onclick=""> 
+					<input type="button" value="다시작성" onclick="">
+					<input type="button" value="글목록" onclick="">
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
