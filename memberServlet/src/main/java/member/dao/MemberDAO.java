@@ -79,8 +79,8 @@ public class MemberDAO {
 
 		return su;
 	}
-
-	private static void close(Connection conn, PreparedStatement pstmt) {
+	
+	public static void close(Connection conn, PreparedStatement pstmt) {
 		try {
 			if (pstmt != null)
 				pstmt.close();
@@ -91,5 +91,45 @@ public class MemberDAO {
 		}
 
 	}
+	
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+			if(rs != null) 
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
+	}
+	
+	public String memberLogin(String id, String pwd){
+		String name = null;
+		String sql = "SELECT * FROM MEMBER where id=? and pwd=?";
+		getConnection();	//오라클 접속
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  id);
+			pstmt.setString(2, pwd);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			MemberDAO.close(conn, pstmt, rs);
+		}
+		
+		
+		return name;
+	}
+
+	
+	
 }

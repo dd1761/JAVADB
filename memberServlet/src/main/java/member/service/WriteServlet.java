@@ -13,7 +13,7 @@ import member.bean.MemberDTO;
 import member.dao.MemberDAO;
 
  
-//@WebServlet("/WriteServlet")
+@WebServlet("/WriteServlet")
 public class WriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -67,9 +67,11 @@ public class WriteServlet extends HttpServlet {
 		
 		if(su == 0) {
 			out.println("<h3>회원가입 실패</h3>");
+			out.println("<input type='button' value='뒤로' onclick='history.go(-1)'");
 		}
 		else {
 			out.println("<h3>회원가입 성공</h3>");
+			out.println("<input type='button' value='로그인' onclick=location.href='http://localhost:8080/memberServlet/member/loginForm.html'>");
 		}
 		
 		out.println("</body>");
@@ -77,6 +79,6 @@ public class WriteServlet extends HttpServlet {
 	}
 		
 		
-
-	
+		
+		
 }
