@@ -4,26 +4,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	
+	div {
+	color: red;
+	font-size: 8pt;
+	font-weight: bold;
+	}
+
 	textarea{
 		height:500px;
-		width:700px;
+		width:700px;	
 	}
 </style>
 </head>
 <body>
-	<form name="writeForm" method="post" action="http://localhost:8080/memberServlet/WriteServlet">
-		<table border="1" cellpadding="10" cellspacing="0">
+	<form name="guestbookWriteForm" method="post" action="http://localhost:8080/guestbookServlet/GuestbookWriteServlet">
+		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>작성자</th>
 				<td>
-					<input type="text" name="name" id="name"  placeholder="작성자 입력" size="30">
+					<input type="text" name="name" id="name"  size="30">
 					<div id="nameDiv"></div>
 				</td>
 			</tr>
 			<tr>
 				<th>이메일</th>
 				<td>
-					<input type="text" name="email" id="email"  placeholder="이메일 입력" size="60" >
+					<input type="text" name="email" id="email"  size="60" >
 					<div id="emailDiv"></div>
 				</td>
 			</tr>
@@ -44,17 +51,32 @@
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea id="contentDiv" name="contentDiv"></textarea>
+					<textarea id="content" name="content" cols="50" rows="10"></textarea>
+					<div id="contentDiv"></div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="글작성" onclick=""> 
+					<input type="button" value="글작성" onclick="checkWrite()"> 
 					<input type="button" value="다시작성" onclick="">
-					<input type="button" value="글목록" onclick="">
+					<input type="button" value="글목록" onclick="submit()">
 				</td>
 			</tr>
 		</table>
 	</form>
+<script type="text/javascript">
+	function checkWrite(){
+		document.getElementById("subject").innerText = "";
+		document.getElementById("contentDiv").innerText = "";
+		if(document.getElementById("subject").value == "")
+			document.getElementById("subjectDiv").innerText = "제목 입력";
+		
+		else if(document.getElementById("content").value == "")
+			document.getElementById("contentDiv").innerText = "내용 입력";
+		
+		else
+			document.guestbookWriteForm.submit();
+	}
+</script>
 </body>
 </html>
