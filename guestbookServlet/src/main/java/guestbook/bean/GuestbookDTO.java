@@ -10,6 +10,7 @@ public class GuestbookDTO {
 	private String logtime;
 	
 	
+	
 	public String getName() {
 		return name;
 	}

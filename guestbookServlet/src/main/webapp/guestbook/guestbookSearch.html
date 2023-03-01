@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="GuestbookSearchForm" method="post" action="http://localhost:8080/guestbookServlet/GuestbookSearchServlet">
+			<tr>
+				<th>글번호 입력: </th>
+				<td>
+					<input type="text" name="seq" id="seq"  size="15">
+					<input type="button" name="submit" value="검색" onclick="submit()"/>
+					<div id="seqDiv"></div>
+					
+				</td>
+			</tr>
+</form>
+</body>
+</html>
