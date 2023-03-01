@@ -97,12 +97,19 @@ public class GuestbookDAO {
 	
 	public GuestbookDTO guestbookSearch(GuestbookDTO guestbookDTO) {
 		String sql = "select name, email, homepage, subject, content, logtime from guestbook where seq=?"; 
+		this.getConnection();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, guestbookDTO.getSeq());
+			
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+		}finally {
+			GuestbookDAO.close(conn, pstmt);
 		}
 		return guestbookDTO;
 		

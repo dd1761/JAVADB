@@ -25,9 +25,10 @@ public class GuestbookSearchServlet extends HttpServlet {
 		
 		guestbookDTO.setSeq(seq);
 		
+		
 		//DB 연동
 		GuestbookDAO guestbookDAO = GuestbookDAO.getInstance();
-		guestbookDAO.guestbook
+		
 	}
 
 }
