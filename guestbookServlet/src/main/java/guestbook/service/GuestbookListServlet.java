@@ -69,13 +69,13 @@ public class GuestbookListServlet extends HttpServlet {
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<style>");
-		out.println("#paging {border: 1px red solid;}");
+		out.println("#paging {float: left; border: 1px red solid; width: 20px; height: 20px; margin-left: 5px; text-align: center;}");
 		out.println("</style>");
 		
 		for(int i = 1; i <= totalP; i++) {
-			out.println("<span id='paging'>"+i+"</span>");
+			out.println("<div id='paging'>"+i+"</div>");
 		}
-		out.println("<br>");
+		out.println("<br><br>");
 		
 		if(list != null) {
 			for(GuestbookDTO guestbookDTO : list) {
