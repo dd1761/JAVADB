@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import guestbook.bean.GuestbookDTO;
 
@@ -95,23 +96,76 @@ public class GuestbookDAO {
 		 
 	}
 	
-	public GuestbookDTO guestbookSearch(GuestbookDTO guestbookDTO) {
-		String sql = "select name, email, homepage, subject, content, logtime from guestbook where seq=?"; 
+	public GuestbookDTO guestbookSearch(String seq) {
+		GuestbookDTO guestbookDTO = null;
+		String sql = "select seq, name, email, homepage, subject, content, to_char(logtime, 'YYYY.MM.DD') as logtime From GuestBOOK where SEQ=?";
 		this.getConnection();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, guestbookDTO.getSeq());
-			
+			pstmt.setInt(1, Integer.parseInt(seq));
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				guestbookDTO = new GuestbookDTO();
+				guestbookDTO.setSeq(rs.getInt("seq"));
+				guestbookDTO.setName(rs.getString("name"));
+				guestbookDTO.setEmail(rs.getString("email"));
+				guestbookDTO.setHomepage(rs.getString("homepage"));
+				guestbookDTO.setSubject(rs.getString("subject"));
+				guestbookDTO.setContent(rs.getString("content"));
+				guestbookDTO.setLogtime(rs.getString("logtime"));
+			}
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}finally {
-			GuestbookDAO.close(conn, pstmt);
+			GuestbookDAO.close(conn, pstmt, rs);
 		}
 		return guestbookDTO;
 		
+	}
+	public ArrayList<GuestbookDTO> guestbookList(int startNum, int endNum) {
+		ArrayList<GuestbookDTO> list = new ArrayList<GuestbookDTO>();
+		String sql = "select * from\r\n"
+				+ "(select ROWNUM RN, AA. * from"
+				+ "(select seq, name, email,"
+				+ "homepage, subject, content,"
+				+ "to_char(logtime, 'YYYY.MM.DD') as logtime "
+				+ "From GuestBOOK order by seq desc) aa"
+				+ ") where RN>=? AND RN <=?";
+		
+		
+		getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startNum);
+			pstmt.setInt(2, endNum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				GuestbookDTO guestbookDTO = new GuestbookDTO();
+				guestbookDTO.setSeq(rs.getInt("seq"));
+				guestbookDTO.setName(rs.getString("name"));
+				guestbookDTO.setEmail(rs.getString("email"));
+				guestbookDTO.setHomepage(rs.getString("homepage"));
+				guestbookDTO.setSubject(rs.getString("subject"));
+				guestbookDTO.setContent(rs.getString("content"));
+				guestbookDTO.setLogtime(rs.getString("logtime"));
+				
+				list.add(guestbookDTO);
+				
+			}//while
+		} catch (SQLException e) {
+			e.printStackTrace();
+			list = null;
+		} finally {
+			GuestbookDAO.close(conn, pstmt, rs);
+		}
+		
+		return list;
 	}
 }
