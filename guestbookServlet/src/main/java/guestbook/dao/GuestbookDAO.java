@@ -168,4 +168,26 @@ public class GuestbookDAO {
 		
 		return list;
 	}
+	public int getTotalA() {
+		String sql = "SELECT COUNT(*) FROM GUESTBOOK";
+		int totalA = 0;
+		
+		getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			totalA = rs.getInt(1);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			GuestbookDAO.close(conn, pstmt, rs);
+		}
+		
+		
+		getConnection();
+		return totalA;
+	}
 }

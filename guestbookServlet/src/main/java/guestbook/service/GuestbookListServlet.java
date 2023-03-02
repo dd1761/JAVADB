@@ -46,11 +46,36 @@ public class GuestbookListServlet extends HttpServlet {
 		GuestbookDAO guestbookDAO = GuestbookDAO.getInstance();
 		 ArrayList<GuestbookDTO> list = guestbookDAO.guestbookList(startNum, endNum);
 		
+		 //총 글수
+		int totalA = guestbookDAO.getTotalA();
+		System.out.println(totalA);
+		 
+		//총 페이지수
+		
+		/*
+		 총글수 : 7
+		 총페이지수 : 4
+		 
+		 총글수 : 8
+		 총페이지수 : 4
+		 
+		 */
+		
+		int totalP = ( totalA + 1 ) / 2;
+		
 		//응답
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
+		out.println("<style>");
+		out.println("#paging {border: 1px red solid;}");
+		out.println("</style>");
+		
+		for(int i = 1; i <= totalP; i++) {
+			out.println("<span id='paging'>"+i+"</span>");
+		}
+		out.println("<br>");
 		
 		if(list != null) {
 			for(GuestbookDTO guestbookDTO : list) {
@@ -86,6 +111,7 @@ public class GuestbookListServlet extends HttpServlet {
 				out.println("<hr style='border-color: red; width: 700px; margin:10px 0;'>");	//margin은 시계방향
 			}//for
 		}//if
+		
 			
 		out.println("</body>");
 		out.println("</html>");
