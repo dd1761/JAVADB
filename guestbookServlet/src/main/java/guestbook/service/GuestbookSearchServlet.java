@@ -19,6 +19,7 @@ public class GuestbookSearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		//1. 데이터
 		int seq = Integer.parseInt("seq");
 		
 		GuestbookDTO guestbookDTO = new GuestbookDTO();
@@ -29,6 +30,8 @@ public class GuestbookSearchServlet extends HttpServlet {
 		//DB 연동
 		GuestbookDAO guestbookDAO = GuestbookDAO.getInstance();
 		
+		
+		//응답
 	}
 
 }

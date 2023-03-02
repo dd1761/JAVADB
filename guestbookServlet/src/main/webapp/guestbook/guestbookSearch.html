@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#seqDiv {
+   color: red;
+   font-size: 8pt;
+   font-weight: bold;
+}
+</style>
 </head>
-<body>
-<form name="GuestbookSearchForm" method="post" action="http://localhost:8080/guestbookServlet/GuestbookSearchServlet">
-			<tr>
-				<th>�۹�ȣ �Է�: </th>
-				<td>
-					<input type="text" name="seq" id="seq"  size="15">
-					<input type="button" name="submit" value="�˻�" onclick="submit()"/>
-					<div id="seqDiv"></div>
-					
-				</td>
-			</tr>
+<body style="background-color: white;">
+<form name="guestbookSearchForm" method="post" action="/guestbookServlet/GuestbookSearchServlet">
+<div style="text-align:center;;">
+   글번호 입력 : 
+      <input type="text" name="seq" id="seq">
+      <input type="button" value="검색" onclick="search()">
+      <div id="seqDiv"></div>
+</div>
 </form>
+<script type="text/javascript">
+function search() {
+   document.getElementById("seqDiv").innerText = "";
+   
+   if(document.getElementById("seq").value == "")
+      document.getElementById("seqDiv").innerText = "찾을 수 없는 방영록입니다.";
+   
+   else
+      document.guestbookSearchForm.submit();
+}
+</script>
 </body>
 </html>
