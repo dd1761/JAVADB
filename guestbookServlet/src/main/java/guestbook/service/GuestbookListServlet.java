@@ -69,11 +69,22 @@ public class GuestbookListServlet extends HttpServlet {
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<style>");
-		out.println("#paging {float: left; border: 1px red solid; width: 20px; height: 20px; margin-left: 5px; text-align: center;}");
+		
+		out.println("#currentPagingDiv {float: left; border: 1px  red solid; width: 20px; height: 20px; margin-left: 5px; text-align: center;}");
+		out.println("#pagingDiv {float: left; width: 20px; height: 20px; margin-left: 5px; text-align: center;}");
+		
+		out.println("#currentPaging {color: red; text-decoration: none;}");
+		out.println("#paging {color: black; text-decoration: none;}");
 		out.println("</style>");
 		
 		for(int i = 1; i <= totalP; i++) {
-			out.println("<div id='paging'>"+i+"</div>");
+			if(i == pg) {
+				out.println("<div id='currentPagingDiv'><a id='currentPaging' href='/guestbookServlet/GuestbookListServlet?pg=" + i + "'>"+i+"</a></div>");
+			}
+			else {
+				out.println("<div id='pagingDiv'><a id='paging' href='/guestbookServlet/GuestbookListServlet?pg=" + i + "'>"+i+"</a></div>");
+			}
+			
 		}
 		out.println("<br><br>");
 		
