@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+<style type="text/css">
 div{
 	color:red;
 	font-size:8pt;

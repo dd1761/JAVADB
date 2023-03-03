@@ -1,11 +1,14 @@
-<%@page import="member.bean.MemberDTO"%>
-<%@page import="member.dao.MemberDAO"%>
-
-<%@page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<% 
-	String name = request.getParameter("name");//이름 속성을 얻어온다. 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+    
+<%@ page import="member.bean.MemberDTO" %>
+<%@ page import="member.dao.MemberDAO" %>
+    
+<%
+	
+	//데이터 
+	request.setCharacterEncoding("UTF-8");
+	String name = request.getParameter("name");
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
 	String gender = request.getParameter("gender");
@@ -20,23 +23,25 @@
 	
 	MemberDTO memberDTO = new MemberDTO();
 	memberDTO.setName(name);
-	memberDTO.setId(id);
-	memberDTO.setPwd(pwd);
-	memberDTO.setGender(gender);
-	memberDTO.setEmail1(email1);
-	memberDTO.setEmail2(email2);
-	memberDTO.setTel1(tel1);
-	memberDTO.setTel2(tel2);
-	memberDTO.setTel3(tel3);
-	memberDTO.setZipcode(zipcode);
-	memberDTO.setAddr1(addr1);
-	memberDTO.setAddr2(addr2);
+    memberDTO.setId(id);
+    memberDTO.setPwd(pwd);
+    memberDTO.setGender(gender);
+    memberDTO.setEmail1(email1);
+    memberDTO.setEmail2(email2);
+    memberDTO.setTel1(tel1);
+    memberDTO.setTel2(tel2);
+    memberDTO.setTel3(tel3);
+    memberDTO.setZipcode(zipcode);
+    memberDTO.setAddr1(addr1);
+    memberDTO.setAddr2(addr2);
 	
-	MemberDAO memberDAO = MemberDAO.getInstance();	//클래스 생성
-	int su = memberDAO.memberWrite(memberDTO);
-%>
+	
+	//DB
+    MemberDAO memberDAO = MemberDAO.getInstance();   //클래스 생성
+    int su = memberDAO.memberWrite(memberDTO);
+	
 
-
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,13 +49,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% 	if(su == 0) { %>
-	<% out.println("<h3>회원가입 실패</h3>"); %>
-	<% out.println("<input type='button' value='뒤로' onclick='history.go(-1)'");%>
-	<% } else { %>
-	<% out.println("<h3>회원가입 성공</h3>");%>
-	<% out.println("<input type='button' value='로그인' onclick=location.href='http://localhost:8080/memberServlet/member/loginForm.html'>");%>
-	<% }%>
+<% if(su == 0){ %>
+<h3>회원가입 실패 </h3>
+<input type='button' value='뒤로 ' onclick='history.go(-1)'>
+<%}
+else {
+%>
+<h3>회원가입 성공 </h3>
+<input type='button' value='로그인' onclick=location.href='loginForm.jsp'>
+<%} %>
 
 </body>
 </html>
