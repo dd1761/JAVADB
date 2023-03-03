@@ -5,9 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+div{
+	color:red;
+	font-size:8pt;
+	font-weight:bold;
+}
+</style>
 </head>
 <body>
-
 <form name="writeForm" method="post" action="write.jsp">
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
@@ -100,7 +106,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="회원가입" onclick="checkWrite()">
-					<input type="button" value="다시작성">
+					<input type="reset" value="다시작성">
 				</td>
 			</tr>
 		</table>
