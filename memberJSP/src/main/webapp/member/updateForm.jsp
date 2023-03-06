@@ -4,7 +4,9 @@
     pageEncoding="UTF-8"%>
 <%
 	//데이터
-	String id = request.getParameter("id"); //loginForm.jsp의 id변수를 가지고 온다.
+	//String id = request.getParameter("id"); //loginForm.jsp의 id변수를 가지고 온다.
+	String id = (String)session.getAttribute("memId");//세션으로부터 id값을 얻어오기
+	
 	
 	//DB
 	MemberDAO memberDAO = MemberDAO.getInstance();
@@ -75,7 +77,7 @@ div{
 				<td>
 					<input type="text" name="email1" id="email1" style="width: 120px;" value="<%=memberDTO.getEmail1() %>">
 					@
-					<input type="text" name="email2" id="email2" style="width: 120px;" onchange="select()" value="<%=memberDTO.getEmail1() %>"> <!-- 자바스크립트 함수 호출 -->
+					<input type="text" name="email2" id="email2" style="width: 120px;" onchange="select()" value="<%=memberDTO.getEmail2() %>"> <!-- 자바스크립트 함수 호출 -->
 					<select name="email3" id="email3" style="width:120px;" onchange="select()">
 							<option value="">직접입력</option>
 							<option value="naver.com">naver.com</option>
