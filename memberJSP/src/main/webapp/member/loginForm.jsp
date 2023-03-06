@@ -45,7 +45,7 @@ div {
 		if(document.getElementById("id").value == "") 
 			document.getElementById("idDiv").innerText = "아이디를 입력하세요";
 		else if(document.getElementById("pwd").value == "") 
-			document.getElementById("pwdDiv").innerText = "비번 입력";
+			document.getElementById("pwdDiv").innerText = "비밀번호 입력";
 		else document.loginForm.submit();
 	}
 	</script>
