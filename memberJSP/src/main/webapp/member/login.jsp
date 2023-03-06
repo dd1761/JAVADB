@@ -29,7 +29,13 @@
 	//쿠키
 	Cookie cookie = new Cookie("memName", name);
 	cookie.setMaxAge(3);	//기본 단위가 초 단위. 3초.
-		
+	response.addCookie(cookie);//클라이언트에 보내기
+	
+	Cookie cookie2 = new Cookie("memId", id);
+	cookie2.setMaxAge(3);	//기본 단위가 초 단위. 3초.
+	response.addCookie(cookie2);//클라이언트에 보내기
+	
+	
 	//세션
 	
 	

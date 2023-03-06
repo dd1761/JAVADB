@@ -3,6 +3,22 @@
 <%
 	//데이터
 	String name = null;
+	String id = null;
+	
+	//쿠키
+	Cookie[] ar = request.getCookies(); //특정 쿠키를 얻을 수 없으므로 모든 쿠키를 다 가져온다.
+	if(ar == null){
+		for(int i = 0; i < ar.length; i++){
+			String cookieName = ar[i].getName();
+			String cookieValue = ar[i].getValue();
+			
+			System.out.println("쿠키명 = " + cookieName);
+			System.out.println("쿠키값 = " + cookieValue);
+			System.out.println();
+			
+		} //for
+	} //if
+	
 %>
 <!DOCTYPE html>
 <html>
