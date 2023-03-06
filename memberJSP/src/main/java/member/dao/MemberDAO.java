@@ -24,6 +24,8 @@ public class MemberDAO {
 
 		return memberDAO;
 	}
+	
+	
 
 	public MemberDAO() {
 		try {
@@ -128,6 +130,45 @@ public class MemberDAO {
 		
 		
 		return name;
+	}
+	
+	public MemberDTO getMember(String id){ //updateForm.jsp의 memberDAO.getMember(id)의 값을 전달
+		MemberDTO memberDTO = null;
+		String sql = "select * from member where id=?";
+		
+		getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);//생성
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();	//ResultSet 리턴
+			
+			if(rs.next()) {
+				memberDTO = new MemberDTO();	//생성
+				memberDTO.setName(rs.getString("name"));
+				memberDTO.setId(rs.getString("id"));
+				memberDTO.setPwd(rs.getString("pwd"));
+				memberDTO.setGender(rs.getString("gender"));
+				memberDTO.setEmail1(rs.getString("email1"));
+				memberDTO.setEmail2(rs.getString("email2"));
+				memberDTO.setTel1(rs.getString("tel1"));
+				memberDTO.setTel2(rs.getString("tel2"));
+				memberDTO.setTel3(rs.getString("tel3"));
+				memberDTO.setZipcode(rs.getString("zipcode"));
+				memberDTO.setAddr1(rs.getString("addr1"));
+				memberDTO.setAddr2(rs.getString("addr2"));
+				
+				
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return memberDTO;
 	}
 
 	
