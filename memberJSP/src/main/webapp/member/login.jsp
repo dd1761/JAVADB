@@ -2,14 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-   <%
+<%
    	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
 	
 	//DB
-			MemberDAO memberDAO = MemberDAO.getInstance();	//클래스 생성
-			String name = memberDAO.memberLogin(id, pwd);
-   %>
+	MemberDAO memberDAO = MemberDAO.getInstance();	//클래스 생성
+	String name = memberDAO.memberLogin(id, pwd);
+			
+	
+	
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +21,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%if(name == null) { %>
-	<h3>아이디 또는 비밀번호가 맞지 않습니다.</h3>
-<%}else {%>
-	<h3><%= name %>님 로그인</h3>
-	<input type="button" value="회원정보수정" onclick="location.href='updateForm.jsp?id=<%=id %>'"> <!-- 회원정보실행일때 id를 실어보내면 보안상 위험 -->
-<%} %>
+<%if(name == null) { 
+	//페이지 이동
+	response.sendRedirect("loginFail.jsp");
+	
+}else {
+	//쿠키
+	Cookie cookie = new Cookie("memName", name);
+	cookie.setMaxAge(3);	//기본 단위가 초 단위. 3초.
+		
+	//세션
+	
+	
+	//페이지 이동
+	response.sendRedirect("loginOk.jsp");
+} %>
 </body>
 </html>
