@@ -24,13 +24,13 @@ div{
 }
 </style>
 </head>
-<body>
+<body onload="select()">
 <form name="updateForm" method="post" action="update.jsp">
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" name="name" id="name"  placeholder="이름 입력">
+					<input type="text" name="name" id="name" value="<%=memberDTO.getName() %>">
 					<div id="nameDiv"></div>
 				</td>
 			</tr>
@@ -38,7 +38,7 @@ div{
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input type="text" name="id" id="id" size="30"  placeholder="아이디 입력">
+					<input type="text" name="id" id="id" size="30"  value="<%=id %>" readonly>
 					<div id="idDiv"></div>
 				</td>
 			</tr>
@@ -46,7 +46,7 @@ div{
 			<tr>
 				<th>비밀번호</th>
 				<td>
-					<input type="password" name="pwd" id="pwd" size="40">
+					<input type="password" name="pwd" id="pwd" size="40" >
 					<div id="pwdDiv"></div>
 				</td>
 			</tr>
@@ -63,10 +63,9 @@ div{
 
 				<td>
 
-						<input type="radio" name="gender" id="gender_m" value="0" checked="checked">
+						<input type="radio" name="gender" id="gender_m" value="0" />
 							<label for="gender_m">남자</label> 
-							&nbsp;
-						<input type="radio" name="gender" id="gender_f" value="1">
+						<input type="radio" name="gender" id="gender_f" value="1" />
 							<label for="gender_f">여자</label>
 				</td>
 			</tr>
@@ -128,6 +127,11 @@ div{
 
 <!-- 절대주소 -->
 /* <script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js"> */
+</script>
+<script type="text/javascript">
+function select(){
+	
+}
 </script>
 </body>
 </html>

@@ -156,16 +156,15 @@ public class MemberDAO {
 				memberDTO.setZipcode(rs.getString("zipcode"));
 				memberDTO.setAddr1(rs.getString("addr1"));
 				memberDTO.setAddr2(rs.getString("addr2"));
-				
-				
-				
-				
+		
 			}
 			
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+		} finally {
+			MemberDAO.close(conn, pstmt, rs);
 		}
 		
 		return memberDTO;
