@@ -24,7 +24,7 @@ div{
 }
 </style>
 </head>
-<body onload="select()">
+<body onload="pick()">
 <form name="updateForm" method="post" action="update.jsp">
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
@@ -73,10 +73,10 @@ div{
 			<tr>
 				<th>이메일</th>
 				<td>
-					<input type="text" name="email1" id=email1 style="width: 120px;">
+					<input type="text" name="email1" id="email1" style="width: 120px;" value="<%=memberDTO.getEmail1() %>">
 					@
-					<input type="text" name="email2" id=email2 style="width: 120px;" onchange="select()"> <!-- 자바스크립트 함수 호출 -->
-					<select name="email3" style="width:120px;" onchange="select()">
+					<input type="text" name="email2" id="email2" style="width: 120px;" onchange="select()" value="<%=memberDTO.getEmail1() %>"> <!-- 자바스크립트 함수 호출 -->
+					<select name="email3" id="email3" style="width:120px;" onchange="select()">
 							<option value="">직접입력</option>
 							<option value="naver.com">naver.com</option>
 							<option value="gmail.com">gmail.com</option>
@@ -95,21 +95,21 @@ div{
 						<option vlaue="070"> 070</option>
 					</select>
 					-
-					<input type="text" name="tel2" id=tel2 style="width: 70px;">
+					<input type="text" name="tel2" id=tel2 style="width: 70px;" value="<%=memberDTO.getTel2() %>">
 					-
-					<input type="text" name="tel3" id=tel3 style="width: 70px;">
+					<input type="text" name="tel3" id=tel3 style="width: 70px;" value="<%=memberDTO.getTel3() %>">
 				</td>
 			<tr>
 			
 			<tr>
 				<th>주소</th>
 				<td>
-					<input type="text" name="zipcode" id="zipcode" size="5" placeholder="우편번호" readonly>
+					<input type="text" name="zipcode" id="zipcode" size="5" placeholder="우편번호" readonly value="<%=memberDTO.getZipcode() %>">
 					<input type="button" value="우편번호검색" onclick="execDaumPostcode()">
 					<br>
-					<input type="text" name="addr1" id="addr1" style="width: 400px;" placeholder="주소" readonly/>
+					<input type="text" name="addr1" id="addr1" style="width: 400px;" placeholder="주소" readonly value="<%=memberDTO.getAddr1() %>"/>
 					<br>
-					<input type="text" name="addr2" id="addr2" style="width: 400px;" placeholder="상세주소"/>
+					<input type="text" name="addr2" id="addr2" style="width: 400px;" placeholder="상세주소" value="<%=memberDTO.getAddr2() %>" />
 				</td>
 			</tr>
 				
@@ -129,7 +129,9 @@ div{
 /* <script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js"> */
 </script>
 <script type="text/javascript">
-function select(){
+function pick(){
+	document.updateForm.gender[<%=memberDTO.getGender() %>].checked = true;
+	document.updateForm.tel1.value = '<%=memberDTO.getTel1() %>';
 	
 }
 </script>

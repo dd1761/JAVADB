@@ -21,7 +21,7 @@
 	<h3>아이디 또는 비밀번호가 맞지 않습니다.</h3>
 <%}else {%>
 	<h3><%= name %>님 로그인</h3>
-	<input type="button" value="회원정보수정" onclick="location.href='updateForm.jsp?id=<%=id %>'">
+	<input type="button" value="회원정보수정" onclick="location.href='updateForm.jsp?id=<%=id %>'"> <!-- 회원정보실행일때 id를 실어보내면 보안상 위험 -->
 <%} %>
 </body>
 </html>
