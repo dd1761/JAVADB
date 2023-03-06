@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<tr>
-	비밀번호 입력 : 
-	<input tpye="text">
-	<input type="button" value="검색" onclick="">
-</tr>
 
 </body>
 </html>
