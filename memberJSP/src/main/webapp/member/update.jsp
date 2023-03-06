@@ -1,4 +1,5 @@
-<%@page import="member.bean.MemberDTO"%>
+<%@ page import="member.bean.MemberDTO" %>
+<%@ page import="member.dao.MemberDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -30,6 +31,10 @@
     memberDTO.setZipcode(zipcode);
     memberDTO.setAddr1(addr1);
     memberDTO.setAddr2(addr2);
+    
+    //DB
+    MemberDAO memberDAO = MemberDAO.getInstance();   //클래스 생성
+    memberDAO.memberUpdate(memberDTO);
 %>    
 
 <!DOCTYPE html>
@@ -39,6 +44,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h3>회원정보수정 완료!!</h3>
 
 </body>
 </html>
