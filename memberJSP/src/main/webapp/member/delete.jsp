@@ -4,12 +4,16 @@
 <%
 	//데이터
 	String id = (String)session.getAttribute("memId");
-	String pwd = request.getParameter("pwd");	//넘어온 데이터
+
+	//세션
+	//session.removeAttribute("memName");
+	//session.removeAttribute("nmemId");
 	
+	session.invalidate();
 	
 	//DB
 	MemberDAO memberDAO = MemberDAO.getInstance();	//클래스 생성
-	
+	memberDAO.memberDelete(id);
 	
 %>
 
@@ -21,5 +25,9 @@
 </head>
 <body>
 
+<script type="text/javascript">
+	alert("회원탈퇴 완료!!");
+	location.href = "loginForm.jsp";
+</script>
 </body>
 </html>
