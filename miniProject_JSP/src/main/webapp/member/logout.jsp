@@ -23,6 +23,8 @@
 	//세션
 	session.removeAttribute("memName");
 	session.removeAttribute("memId");
+	
+	session.invalidate();
 %>
 
 <!DOCTYPE html>
@@ -33,5 +35,10 @@
 </head>
 <body>
 <h3>로그아웃</h3>
+
+<script type="text/javascript">
+	alert("로그아웃");
+	location.href = "../index.jsp";
+</script>
 </body>
 </html>
