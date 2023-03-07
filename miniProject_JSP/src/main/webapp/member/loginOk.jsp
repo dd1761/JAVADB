@@ -4,6 +4,7 @@
 	//데이터
 	String name = null;
 	String id = null;
+	String email = null;
 	
 	/*
 	//쿠키
@@ -26,7 +27,7 @@
 	
 	name = (String)session.getAttribute("memName");
 	id = (String)session.getAttribute("memId");
-				
+	email = (String)session.getAttribute("memEmail");		
 	
 %>
 <!DOCTYPE html>
@@ -36,7 +37,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3><img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style="cursor: pointer;"><%=name %>님 로그인</h3>
+<h3><img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style="cursor: pointer;">
+<%=name %>님 로그인</h3>
 <br>
 	<input type="button" value="로그아웃" onclick="location.href='logout.jsp'">
 	<%-- <input type="button" value="회원정보수정" onclick="location.href='updateForm.jsp?id=<%=id %>'"> --%> <!-- 회원정보실행일때 id를 실어보내면 보안상 위험 -->

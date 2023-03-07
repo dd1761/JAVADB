@@ -19,7 +19,7 @@
 		onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" 
 		style="cursor: pointer;">글쓰기
 	</h3>
-<form name="boardWriteForm" method="post" action="">
+<form name="boardWriteForm" method="post" action="boardWrite.jsp">
 	<table border="1" cellpadding="5" cellspacing="0">
 		<tr>
 			<th>제목</th>
@@ -45,7 +45,7 @@
 </form>
 <script type="text/javascript">
 	function checkBoardWrite(){
-		document.getElementById("subject").innerText = "";
+		document.getElementById("subjectDiv").innerText = "";
 		document.getElementById("contentDiv").innerText = "";
 		if(document.getElementById("subject").value == ""){
 			document.getElementById("subjectDiv").innerText = "제목 입력";

@@ -9,9 +9,9 @@
 	//DB
 	MemberDAO memberDAO = MemberDAO.getInstance();	//클래스 생성
 	String name = memberDAO.memberLogin(id, pwd);
-			
+	String email = memberDAO.memberEmail(id);
 	
-	//
+	
 	
 %>
 <!DOCTYPE html>
@@ -42,8 +42,9 @@
 	//HttpSession session = request.getSession(); // - JSP는 세션이 내장객체로 이미 생성되어있음.
 	session.setAttribute("memName", name);
 	session.setAttribute("memId", id);
-	
-	
+	session.setAttribute("memPwd", pwd);
+	session.setAttribute("memEmail", email);
+	 
 	//페이지 이동
 	response.sendRedirect("loginOk.jsp");
 } %>

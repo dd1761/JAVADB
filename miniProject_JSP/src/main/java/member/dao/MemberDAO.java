@@ -254,6 +254,28 @@ public class MemberDAO {
 		}
 	}
 
+	public String memberEmail(String id) {
+		String email = null;
+		String email1 = null;
+		String email2 = null;
+		String sql = "select email1, email2 from member where id=?";
+		getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				email1 = rs.getString("email1");
+				email2 = rs.getString("email2");
+				email = email1 + email2;
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return email;
+	}
 	
 	
 }

@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+a:link{ color: black; text-decoration: none;}
+a:visited{color: black; text-decoration: none;}
+a:hover{ color: hotpink; text-decoration: underline;}
+a:active{ color: black; text-decoration: none;}
+</style>
 </head>
 <body>
 <div>

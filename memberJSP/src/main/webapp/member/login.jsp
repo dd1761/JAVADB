@@ -42,7 +42,7 @@
 	//HttpSession session = request.getSession(); // - JSP는 세션이 내장객체로 이미 생성되어있음.
 	session.setAttribute("memName", name);
 	session.setAttribute("memId", id);
-	
+	session.setAttribute("memPwd", pwd);
 	
 	//페이지 이동
 	response.sendRedirect("loginOk.jsp");
