@@ -18,7 +18,9 @@
 	List<BoardDTO> list = boardDAO.boardList();
 	//ArrayList<BoardDTO> arrayList = new ArrayList<BoardDTO>();
 	
+
 %>
+
 <!DOCTYPE html>
 <html>
 <head>

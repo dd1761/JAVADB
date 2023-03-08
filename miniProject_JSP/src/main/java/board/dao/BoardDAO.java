@@ -102,7 +102,7 @@ public class BoardDAO {
 	
 	public List<BoardDTO> boardList(){
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql = "select * from board order by seq desc";
+		String sql = "select * from board order by ref desc, setp asc";
 		
 		getConnection();
 		

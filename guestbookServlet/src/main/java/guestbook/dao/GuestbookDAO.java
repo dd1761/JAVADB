@@ -186,7 +186,7 @@ public class GuestbookDAO {
 			GuestbookDAO.close(conn, pstmt, rs);
 		}
 		
-		
+		 
 		getConnection();
 		return totalA;
 	}

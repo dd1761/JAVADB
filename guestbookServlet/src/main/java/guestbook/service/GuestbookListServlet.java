@@ -44,12 +44,12 @@ public class GuestbookListServlet extends HttpServlet {
 		
 		//DB 연동
 		GuestbookDAO guestbookDAO = GuestbookDAO.getInstance();
-		 ArrayList<GuestbookDTO> list = guestbookDAO.guestbookList(startNum, endNum);
+		ArrayList<GuestbookDTO> list = guestbookDAO.guestbookList(startNum, endNum);
 		
-		 //총 글수
+		//총 글수
 		int totalA = guestbookDAO.getTotalA();
 		System.out.println(totalA);
-		 
+		
 		//총 페이지수
 		
 		/*
