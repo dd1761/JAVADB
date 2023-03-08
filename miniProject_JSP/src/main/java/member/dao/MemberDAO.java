@@ -108,8 +108,9 @@ public class MemberDAO {
 
 	}
 	
-	public String memberLogin(String id, String pwd){
-		String name = null;
+	public MemberDTO memberLogin(String id, String pwd){
+		MemberDTO memberDTO = null;
+		
 		String sql = "SELECT * FROM MEMBER where id=? and pwd=?";
 		getConnection();	//오라클 접속
 		try {
@@ -119,7 +120,12 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				name = rs.getString("name");
+				memberDTO = new MemberDTO();
+				memberDTO.setName(rs.getString("name"));
+				memberDTO.setEmail1(rs.getString("email1"));
+				memberDTO.setEmail1(rs.getString("email12"));
+				
+				
 			}
 		} catch (SQLException e) {
 			
@@ -129,7 +135,8 @@ public class MemberDAO {
 		}
 		
 		
-		return name;
+		return memberDTO;	// 1. MemberDTO 2. Map 
+														// ex) Map<name, 홍길동>
 	}
 	
 	public MemberDTO getMember(String id){ //updateForm.jsp의 memberDAO.getMember(id)의 값을 전달
@@ -254,28 +261,5 @@ public class MemberDAO {
 		}
 	}
 
-	public String memberEmail(String id) {
-		String email = null;
-		String email1 = null;
-		String email2 = null;
-		String sql = "select email1, email2 from member where id=?";
-		getConnection();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				email1 = rs.getString("email1");
-				email2 = rs.getString("email2");
-				email = email1 + email2;
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		return email;
-	}
-	
-	
+		
 }
