@@ -76,7 +76,6 @@ public class BoardDAO {
 				+ "values(seq_board.nextval,?,?,?,?,?,seq_board.currval)";
 		
 		
-		
 		try {
 			conn = ds.getConnection();
 			
@@ -100,10 +99,8 @@ public class BoardDAO {
 	
 	public List<BoardDTO> boardList(){
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql = "select * from board order by ref desc, setp asc";
-		
-		
-		
+		String sql = "select * from board order by ref desc, step asc";
+
 		try {
 			conn = ds.getConnection();
 			
@@ -139,4 +136,25 @@ public class BoardDAO {
 		return list;
 	}
 
+	public int getTotalA(){
+		int totalA = 0;
+		String sql = "select count(*) from board";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			totalA = rs.getInt(1);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			BoardDAO.close(conn, pstmt, rs);
+		}
+		
+		return totalA;
+	}
 } 

@@ -1,24 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="board.bean.BoardDTO" %>
+<%@page import="board.bean.BoardPaging"%>
 <%@page import="board.dao.BoardDAO"%>
-<%@ page import="board.bean.BoardDTO" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 
 <%
 	//데이터
-	request.setCharacterEncoding("UTF-8");
-	String id = (String)session.getAttribute("memId");
-	String name = (String)session.getAttribute("memName");
-	String email = (String)session.getAttribute("memEmail");
+	int pg = Integer.parseInt(request.getParameter("pg"));
+	
 	
 	//DB
 	BoardDAO boardDAO = BoardDAO.getInstance();
 	List<BoardDTO> list = boardDAO.boardList();
 	//ArrayList<BoardDTO> arrayList = new ArrayList<BoardDTO>();
-	
 
+	//페이징 처리
+	int totalA = boardDAO.getTotalA();//총 글수
+	
+	BoardPaging boardPaging = new BoardPaging();
+	boardPaging.setCurrentPage(pg);
+	boardPaging.setPageBlock(3);
+	boardPaging.setPageSize(5);
+	boardPaging.setTotalA(totalA);
+	
+	boardPaging.makePagingHTML();
 %>
 
 <!DOCTYPE html>
@@ -31,13 +39,26 @@
 .subjectA:visited{color: black; text-decoration: none;}
 .subjectA:hover{ color: green; text-decoration: underline;}
 .subjectA:active{ color: black; text-decoration: none;}
+#currentPaging{
+	color: red;
+	border: 1px solid red;
+	padding: 5px 8px; /* top / bottom, left / right  */
+	margin: 5px; /* top, right, bottom, left  */
+	cursor: pointer;
+}
+#paging{
+	color: black;
+	padding: 5px;
+	margin: 5px;
+	cursor: pointer;
+	/* board: 1px solid black; */
+}
 
 </style>
 </head>
 <body>
 <img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" 
-onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" 
-style="cursor: pointer;">
+onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style="cursor: pointer;">
 <table border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
 	<tr>
 		<th width="100">글번호</th>
@@ -59,6 +80,15 @@ style="cursor: pointer;">
 			</tr>
 		<% } %>
 	<% } %>
-</table>	
+</table>
+<div style="solid blue; margin-top: 15px; width: 850px; text-align: center;">
+	<%=boardPaging.getPagingHTML() %>
+</div>
+	
+<script type="text/javascript">
+function boardPaging(pg){
+	location.href = "boardList.jsp?pg=" + pg;
+}
+</script>
 </body>
 </html>
