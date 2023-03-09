@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import board.bean.BoardDTO;
 
 
@@ -17,10 +22,8 @@ public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String username = "c##java";
-	private String password = "1234";
+	private DataSource ds;
+
 	
 	private static BoardDAO boardDAO = new BoardDAO();
 
@@ -57,31 +60,26 @@ public class BoardDAO {
 	
 	public BoardDAO() {
 		try {
-			Class.forName(driver); // Class타입으로 생성
-			System.out.println("driver loading 성공");
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		}
-		// 접속은 한번만 하는것이 아니기 때문에 생성자에서 하면 안됨.
-	}
-
-	public void getConnection() {
-		try {
-			conn = DriverManager.getConnection(url, username, password);/* 오라클 드라이버 */
-			System.out.println("connection 성공");
-		} catch (SQLException e) {
+			Context ctx = new InitialContext(); //생성
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+			
+		} catch (NamingException e) {
+			
 			e.printStackTrace();
 		}
 	}
+
+	
 	
 	public void boardWrite(Map<String, String> map) {
 		String sql = "insert into board(seq,id,name,email,subject,content,ref)"
 				+ "values(seq_board.nextval,?,?,?,?,?,seq_board.currval)";
 		
-		getConnection(); //접속
+		
 		
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, map.get("id"));
 			pstmt.setString(2, map.get("name"));
@@ -104,9 +102,11 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		String sql = "select * from board order by ref desc, setp asc";
 		
-		getConnection();
+		
 		
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
