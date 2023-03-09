@@ -71,7 +71,7 @@ onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style=
 		<% for(BoardDTO boardDTO : list) {%>
 			<tr>
 				<td align="center"><%=boardDTO.getSeq() %></td>
-				<td><a class="subjectA" href=""><%=boardDTO.getSubject() %></a></td>
+				<td><a class="subjectA" onclick="checkLogin()" href="boardView.jsp"><%=boardDTO.getSubject() %></a></td>
 				<td align="center"><%=boardDTO.getId() %></td>
 				<td align="center"><%=boardDTO.getHit() %></td>
 				<td align="center">
@@ -89,6 +89,18 @@ onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style=
 function boardPaging(pg){
 	location.href = "boardList.jsp?pg=" + pg;
 }
+</script>
+<script type="text/javascript">
+function checklogin(){
+		String id = null;
+		if( id == null){
+			alert("ㅎㅇ");
+		}
+		else{
+			alert("꽝");
+		}
+		
+	}
 </script>
 </body>
 </html>
