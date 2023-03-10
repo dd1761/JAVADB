@@ -91,7 +91,7 @@ onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style=
 		<% for(BoardDTO boardDTO : list) {%>
 			<tr>
 				<td align="center"><%=boardDTO.getSeq() %></td>
-				<td><a class="subjectA" href="#" onclick="isLogin('<%=memId%>')"><%=boardDTO.getSubject() %></a></td>
+				<td><a class="subjectA" href="#" onclick="isLogin('<%=memId%>', <%=boardDTO.getSeq() %>, <%=pg %>)"><%=boardDTO.getSubject() %></a></td>
 				<td align="center"><%=boardDTO.getId() %></td>
 				<td align="center"><%=boardDTO.getHit() %></td>
 				<td align="center">
@@ -111,12 +111,12 @@ function boardPaging(pg){
 }
 </script>
 <script type="text/javascript">
-function isLogin(memId){
-		alert(memId)
+function isLogin(memId, seq, pg){
+		alert(memId + ", " + seq)
 		if(memId == 'null') 
 			alert("먼저 로그인 하세요");
 		else
-			location.href="boardView.jsp";
+			location.href="boardView.jsp?seq=" + seq + "&pg=" + pg;
 	}
 </script>
 </body>
