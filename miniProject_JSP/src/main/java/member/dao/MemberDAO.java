@@ -128,7 +128,6 @@ public class MemberDAO {
 				memberDTO.setEmail1(rs.getString("email1"));
 				memberDTO.setEmail1(rs.getString("email12"));
 				
-				
 			}
 		} catch (SQLException e) {
 			
