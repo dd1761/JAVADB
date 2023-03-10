@@ -121,12 +121,19 @@ div{
 </script>
 <script type="text/javascript">
 function checkId(){
+	
+	var id = document.getElementById("id").value;
+	//let id;	//뭘 써도 상관없음
+	//const id;
+	
+	
 	document.getElementById("idDiv").value == "";
-	if(document.getElementById("id").value ==""){
+	if(id ==""){
 		document.getElementById("idDiv").innerHTML = "<font color='magenta'>먼저 아이디를 입력하세요</font>";
 	}
 	else{
-		window.open("checkId.jsp","checkId","width=300 height=150 left=900 top=200");
+		window.open("checkId.jsp?id=" + id,"checkId","width=300 height=150 left=900 top=200");
+		
 	}
 
 

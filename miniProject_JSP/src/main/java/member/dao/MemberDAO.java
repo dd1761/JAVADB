@@ -223,6 +223,29 @@ public class MemberDAO {
 		
 	}
 	
+	public boolean isExistId(String id) {
+		boolean exist = false;
+		String sql = "select * from member where id=?";
+		
+		try {
+			conn = ds.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) exist = true;
+		} catch (SQLException e) {
+			
+			
+		} finally {
+			MemberDAO.close(conn, pstmt, rs);
+		}
+		
+		return exist;
+	}
+	
 	public boolean isExistPwd(String id, String pwd){
 		boolean exist = false;
 		String sql = "select * from member where id=? and pwd=?";
