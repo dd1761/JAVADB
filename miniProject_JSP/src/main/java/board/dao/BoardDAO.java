@@ -97,14 +97,19 @@ public class BoardDAO {
 		
 	}
 	
-	public List<BoardDTO> boardList(){
+	public List<BoardDTO> boardList(Map<String, Integer> map){
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql = "select * from board order by ref desc, step asc";
+		String sql = "select * from "
+				+ "(select rownum rn, TT.* from "
+				+ "(select * from board order by ref desc, step asc) TT "
+				+ ") where rn>=? and rn<=?";
 
 		try {
 			conn = ds.getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, map.get("startNum"));
+			pstmt.setInt(2, map.get("endNum"));
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

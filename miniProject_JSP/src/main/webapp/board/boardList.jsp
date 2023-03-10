@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="board.bean.BoardDTO" %>
 <%@page import="board.bean.BoardPaging"%>
 <%@page import="board.dao.BoardDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 
 <%
 	//데이터
@@ -14,9 +16,24 @@
 	
 	//DB
 	BoardDAO boardDAO = BoardDAO.getInstance();
-	List<BoardDTO> list = boardDAO.boardList();
-	//ArrayList<BoardDTO> arrayList = new ArrayList<BoardDTO>();
+	
+	//1페이지당 5개씩
 
+	/* 
+	pg=1    rn>=1 and rn<=5
+	pg=2    rn>=6 and rn<=10
+	pg=3    rn>=11 and rn<=15
+	*/
+	int endNum = pg*5;
+	int startNum = endNum-4;
+	
+	Map<String, Integer> map = new HashMap<String, Integer>();
+	map.put("startNum", startNum);
+	map.put("endNum", endNum);
+	
+	List<BoardDTO> list = boardDAO.boardList(map);
+	//ArrayList<BoardDTO> arrayList = new ArrayList<BoardDTO>();
+	
 	//페이징 처리
 	int totalA = boardDAO.getTotalA();//총 글수
 	
