@@ -46,7 +46,7 @@
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea id="content" name="content" cols="50" rows="15" ><%=boardDTO.getContent()%>"</textarea>
+				<textarea id="content" name="content" cols="50" rows="15" ><%=boardDTO.getContent()%></textarea>
 				<div id="contentDiv"></div>
 			</td>
 		</tr>
