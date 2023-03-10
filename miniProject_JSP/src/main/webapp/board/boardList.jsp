@@ -12,6 +12,9 @@
 <%
 	//데이터
 	int pg = Integer.parseInt(request.getParameter("pg"));
+
+	//세션
+	String memId = (String)session.getAttribute("memId");
 	
 	
 	//DB
@@ -79,7 +82,7 @@ onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style=
 <table border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
 	<tr>
 		<th width="100">글번호</th>
-		<th width="300">제목</th>
+		<th width="400">제목</th>
 		<th width="150">작성자</th>
 		<th width="100">조회수</th>
 		<th width="150">작성일</th>
@@ -88,7 +91,7 @@ onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style=
 		<% for(BoardDTO boardDTO : list) {%>
 			<tr>
 				<td align="center"><%=boardDTO.getSeq() %></td>
-				<td><a class="subjectA" onclick="checkLogin()" href="boardView.jsp"><%=boardDTO.getSubject() %></a></td>
+				<td><a class="subjectA" href="#" onclick="isLogin('<%=memId%>')"><%=boardDTO.getSubject() %></a></td>
 				<td align="center"><%=boardDTO.getId() %></td>
 				<td align="center"><%=boardDTO.getHit() %></td>
 				<td align="center">
@@ -108,15 +111,12 @@ function boardPaging(pg){
 }
 </script>
 <script type="text/javascript">
-function checklogin(){
-		String id = null;
-		if( id == null){
-			alert("ㅎㅇ");
-		}
-		else{
-			alert("꽝");
-		}
-		
+function isLogin(memId){
+		alert(memId)
+		if(memId == 'null') 
+			alert("먼저 로그인 하세요");
+		else
+			location.href="boardView.jsp";
 	}
 </script>
 </body>
