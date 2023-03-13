@@ -30,33 +30,34 @@
 <body>
 <%if(boardDTO != null){ %>
 	<form name="boardViewForm" method="post">
-	<table border="1" cellpadding="5" cellspacing="0">
-		<tr>
 		<h3>
 		<img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" 
 		onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" 
 		style="cursor: pointer;"> 작성한 글확인
 		</h3>
-			<th>제목</th>
-			<td>
-				<input type="text" name="subject" id="subject" size="50" value="<%=boardDTO.getSubject()%>">
-				<div id="subjectDiv"></div>
-			</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>
-				<textarea id="content" name="content" cols="50" rows="15" ><%=boardDTO.getContent()%></textarea>
-				<div id="contentDiv"></div>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="button" value="목록" onclick=""> 
-				<input type="reset" value="다시작성">
-			</td>
-		</tr>
-	</table>
+		<table width="450" border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
+			<tr>
+				<td colspan="3">
+					<h2><%=boardDTO.getSubject() %></h2>
+				</td>
+			</tr>
+			
+			<tr>
+				<td width="150" align="center">글번호 : <%=boardDTO.getSeq() %></td>
+				<td width="150" align="center">작성자 : <%=boardDTO.getId() %></td>
+				<td width="150" align="center">조회수 : <%=boardDTO.getHit() %></td>
+				
+			</tr>
+			
+			<tr>
+				<td colspan="3" height="250" valign="top">
+					<div style="width: 100%; height: 100%; overflow:auto;">
+						<pre style="white-space: pre-line; word-break: break-all;"><%=boardDTO.getContent() %></pre>
+					</div>
+				</td>
+			</tr>
+		</table> 
+		<input type="button" value="목록" onclick="history.go(-1)">
 </form>
 <%} %>
 </body>
