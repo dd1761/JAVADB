@@ -33,6 +33,7 @@ public class UserMain {
 			else if(num == 2) {
 				userService = new UserSelectService();
 			}
+			
 			userService.execute();
 		}//while
 	}
