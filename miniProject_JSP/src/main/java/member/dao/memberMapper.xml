@@ -78,8 +78,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where id=#{id}
 	</select>
 	
-	<select id="memberLogin" parameterType="user">
+	<select id="memberLogin" parameterType="java.util.Map" resultType="user">
 		SELECT * FROM MEMBER where id=#{id} and pwd=#{pwd}
 	</select>
+	
 	
 </mapper>

@@ -70,8 +70,8 @@ public class MemberDAO {
 		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
 		List<MemberDTO> list = sqlSession.selectList("memberSQL.memberLogin", map);
 		sqlSession.close();
-		return list;	// 1. MemberDTO 2. Map 
-														// ex) Map<name, 홍길동>
+		return list;	
+				//여기서 id랑 pwd를 받아와서 select * from member where id=id and pwd=pwd를 거쳐 list에 값을 가지고 오겠지
 	}
 //	
 	public MemberDTO getMember(String id){ //updateForm.jsp의 memberDAO.getMember(id)의 값을 전달
