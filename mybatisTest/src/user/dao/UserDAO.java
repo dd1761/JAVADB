@@ -81,10 +81,9 @@ public class UserDAO {
 	        List<UserDTO> list = sqlSession.selectList("userSQL.search", map);
 	        sqlSession.close();
 	        return list;
-	    }
+	 }
 
-	//    map.put("name", name);
-	//	map.put("id", id);
+	
 
 }
 

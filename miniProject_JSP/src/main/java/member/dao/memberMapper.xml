@@ -2,16 +2,25 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="userSQL">
+<mapper namespace="memberSQL">
 	
 	<resultMap type="user" id="userResult">
 		<result column="NAME" property="name"/>
 		<result column="ID" property="id"/>
 		<result column="PWD" property="pwd"/>
+		<result column="GENDER" property="gender"/>
+		<result column="EMAIL1" property="email1"/>
+		<result column="EMAIL2" property="email2"/>
+		<result column="TEL1" property="tel1"/>
+		<result column="TEL2" property="tel2"/>
+		<result column="TEL3" property="tel3"/>
+		<result column="ZIPCODE" property="zipcode"/>
+		<result column="ADDR1" property="addr1"/>
+		<result column="ADDR2" property="addr2"/>
 	</resultMap>
-	
-	<insert id="write" parameterType="user">
-		insert into usertable values(#{name}, #{id}, #{pwd})
+		
+	<insert id="memberWrite" parameterType="user" >
+		insert into member values(#{name}, #{id}, #{pwd}, #{gender}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3}, #{zipcode}, #{addr1}, #{addr2}, sysdate)
 	</insert> <!-- 넘어오는 데이터의 자료형-->
 	
 	<!--같은 이름을 찾아서 매핑을 한다.-->
@@ -20,20 +29,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>-->
 	
 	<!-- 만약 UserDTO의 필드명과 오라클 컬럼명이 틀린 경우-->
-	<select id="getUserList" resultMap="userResult">
-		select * from usertable
+	<select id="getMemberList" resultMap="userResult">
+		select * from member
 	</select>
 	
-	<select id="getUser" parameterType="String" resultType="user">
-		select * from usertable where id=#{id}
+	<select id="getMember" parameterType="String" resultType="user">
+		select * from member where id=#{id}
 	</select>
 	
 	<update id="update" parameterType="java.util.Map">
-		update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
+		update member set name=#{name}, pwd=#{pwd} where id=#{id}
 	</update>
 	
 	<delete id="delete" parameterType="String">
-		delete usertable where id=#{id}
+		delete member where id=#{id}
 	</delete>
 	
 	
@@ -61,8 +70,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				id like '%' || #{value} || '%'
 			</otherwise>
 		</choose>-->
-		SELECT * FROM usertable where ${columnName} like '%' || #{value} || '%'
+		SELECT * FROM member where ${columnName} like '%' || #{value} || '%'
 		
+	</select>
+	
+	<select id="isExistId" parameterType="String" resultType="user">
+		select * from member where id=#{id}
+	</select>
+	
+	<select id="memberLogin" parameterType="user">
+		SELECT * FROM MEMBER where id=#{id} and pwd=#{pwd}
 	</select>
 	
 </mapper>

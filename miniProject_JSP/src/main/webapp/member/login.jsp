@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="member.bean.MemberDTO" %>
@@ -9,7 +11,9 @@
 
 	//DB
 	MemberDAO memberDAO = MemberDAO.getInstance();
-	MemberDTO memberDTO = memberDAO.memberLogin(id, pwd);
+	/* MemberDTO memberDTO = memberDAO.memberLogin(id, pwd); */
+	Map<String, String> map = new HashMap<String, String>();
+	
 %>
 
 <!DOCTYPE html>
@@ -19,7 +23,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% if(memberDTO == null) {
+<% if(map == null) {
 	//페이지 이동
 	response.sendRedirect("loginFail.jsp");
 	
@@ -36,20 +40,6 @@
 } %>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -19,31 +19,57 @@ public class UserSearchService implements UserService {
         System.out.println("2. 아이디 검색");
         System.out.print("번호 선택: ");
         int num = scanner.nextInt();
-        String id = null;
-        String name = null;
+        String value = null;
+        String columnName = null;
         
-        if (num == 1) {
-            System.out.print("찾고자 하는 이름 입력 : ");
-            name = scanner.next();
-            id=null;
-        } else if (num == 2) {
-            System.out.print("찾고자 하는 아이디 입력 : ");
-            id = scanner.next();
-            name=null;
+        System.out.println();
+        if(num == 1) {
+        	System.out.print("검색할 이름 입력 : ");
+        	value = scanner.next();
+        	columnName = "name";
         }
+        else if(num == 2) {
+        	System.out.print("검색할 아이디 입력 : ");
+        	value = scanner.next();
+        	columnName = "id";
+        }
+        
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("columnName", columnName);
+        map.put("value", value);
         
         UserDAO userDAO = UserDAO.getInstance();
-        Map<String, String> map = new HashMap<String,String>();
-        map.put("name", name);
-		map.put("id", id);
+        List<UserDTO> list = userDAO.search(map);
         
-		List<UserDTO> list = userDAO.search(map);
-
+        System.out.println("이름\t아이디\t비밀번호");
         for(UserDTO userDTO : list) {
-        	System.out.println(userDTO.getId() + "\t" + userDTO.getName() + "\t" + userDTO.getPwd());
+    		System.out.println(userDTO.getId() + "\t" + userDTO.getName() + "\t" + userDTO.getPwd());
+
         }
-       
-        
+//        String id = null;
+//        String name = null;
+//        
+//        if (num == 1) {
+//            System.out.print("찾고자 하는 이름 입력 : ");
+//            name = scanner.next();
+//            id=" ";
+//        } else if (num == 2) {
+//            System.out.print("찾고자 하는 아이디 입력 : ");
+//            id = scanner.next();
+//            name=" ";
+//        }
+//        
+//        UserDAO userDAO = UserDAO.getInstance();
+//        Map<String, String> map = new HashMap<String,String>();
+//        map.put("name", name);
+//		map.put("id", id);
+//        
+//		List<UserDTO> list = userDAO.search(map);
+//
+//        for(UserDTO userDTO : list) {
+//        		System.out.println(userDTO.getId() + "\t" + userDTO.getName() + "\t" + userDTO.getPwd());
+//
+//        }
 		
 		
     }

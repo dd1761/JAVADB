@@ -38,7 +38,8 @@
 	
 	//DB
     MemberDAO memberDAO = MemberDAO.getInstance();   //클래스 생성
-    int su = memberDAO.memberWrite(memberDTO);
+    /* int su = memberDAO.memberWrite(memberDTO); */
+   	int su = memberDAO.memberWrite(memberDTO);
 	
 
 %>  
@@ -49,15 +50,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% if(su == 0){ %>
+ <% if(su == 0){ %> 
 <h3>회원가입 실패 </h3>
 <input type='button' value='뒤로 ' onclick='history.go(-1)'>
 <%}
 else {
-%>
+%> 
 <h3>회원가입 성공 </h3>
 <input type='button' value='로그인' onclick=location.href='loginForm.jsp'>
-<%} %>
+ <%} %> 
 
 </body>
 </html>
