@@ -97,7 +97,7 @@ public class MemberDAO {
 		sqlSession.update("memberSQL.memberUpdate", memberDTO);
 		sqlSession.commit();
 		sqlSession.close();
-	
+		
 	}
 		
 
