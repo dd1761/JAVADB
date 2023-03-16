@@ -3,10 +3,11 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="db.properties"></properties>
+	<properties resource="conf/db.properties"></properties>
 	
 	<typeAliases>
-		<typeAlias type="member.bean.MemberDTO" alias="user"/>
+		<typeAlias type="member.bean.MemberDTO" alias="member"/>
+		<typeAlias type="board.bean.BoardDTO" alias="board"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,5 +24,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
 		<mapper resource="member/dao/memberMapper.xml"/>
+		<mapper resource="board/dao/boardMapper.xml"/>
 	</mappers>
 </configuration>
