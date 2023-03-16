@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,19 @@ public class MemberDAO {
 		return su;
 	}
 	
+	public boolean isExistId(String id) {
+		boolean existId = false;
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.isExistId", id);
+		if(memberDTO != null) {
+			existId = true;
+		}
+		
+		sqlSession.close();
+		
+		return existId;
+	}
 	
 	
 	public MemberDTO getMember(String id){ //updateForm.jsp의 memberDAO.getMember(id)의 값을 전달
@@ -77,118 +91,39 @@ public class MemberDAO {
 
 		return memberDTO;
 	}
-//	
-//	public void memberUpdate(MemberDTO memberDTO){
-//		String sql = "update member set name=?"
-//						  			+ ", pwd=?"
-//						  			+ ", gender=?"
-//						  			+ ", email1=?"
-//						  			+ ", email2=?"
-//						  			+ ", tel1=?"
-//						  			+ ", tel2=?"
-//						  			+ ", tel3=?"
-//						  			+ ", zipcode=?"
-//						  			+ ", addr1=?"
-//						  			+ ", addr2=?"
-//						  			+ ", logtime=sysdate"
-//						  			+ " where id=?";
-//		
-//		
-//		try {
-//			conn = ds.getConnection();
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, memberDTO.getName());
-//			pstmt.setString(2, memberDTO.getPwd());
-//			pstmt.setString(3, memberDTO.getGender());
-//			pstmt.setString(4, memberDTO.getEmail1());
-//			pstmt.setString(5, memberDTO.getEmail2());
-//			pstmt.setString(6, memberDTO.getTel1());
-//			pstmt.setString(7, memberDTO.getTel2());
-//			pstmt.setString(8, memberDTO.getTel3());
-//			pstmt.setString(9, memberDTO.getZipcode());
-//			pstmt.setString(10, memberDTO.getAddr1());
-//			pstmt.setString(11, memberDTO.getAddr2());
-//			pstmt.setString(12, memberDTO.getId());
-//			
-//			pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			
-//			e.printStackTrace();
-//		} finally {
-//			MemberDAO.close(conn, pstmt);
-//		}
-//		
-//	}
-//	
-//	
-//	
-//	public boolean isExistPwd(String id, String pwd){
-//		boolean exist = false;
-//		String sql = "select * from member where id=? and pwd=?";
-//		
-//		
-//		try {
-//			conn = ds.getConnection();
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, id);
-//			pstmt.setString(2, pwd);
-//			
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) exist = true;
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			MemberDAO.close(conn, pstmt, rs);
-//		}
-//		
-//		return exist;
-//	}
-//	
-//	public void memberDelete(String id) {
-//		
-//		String sql = "delete member where id=?";
-//		
-//		
-//		
-//		try {
-//			conn = ds.getConnection();
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, id);
-//			
-//			pstmt.executeUpdate();
-//			
-//		} catch (SQLException e) {
-//			
-//			e.printStackTrace();
-//		} finally {
-//			MemberDAO.close(conn, pstmt);
-//		}
-//	}
-//
-	public boolean isExistId(String id) {
-		boolean existId = false;
-		MemberDTO dto =new MemberDTO();
+	
+	public void memberUpdate(MemberDTO memberDTO){
+		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
+		sqlSession.update("memberSQL.memberUpdate", memberDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	
+	}
 		
+
+	public boolean isExistPwd(String id, String pwd){
+		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
+		boolean exist = false;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pwd", pwd);
+		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.isExistPwd", map);
 		
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		dto = sqlSession.selectOne("memberSQL.isExistId", id);
-		
-		if(dto==null) {
-			existId=false;
-		}
-		else if(dto!=null) {
-			existId=true;
+		if(memberDTO != null) {
+			exist = true;
 		}
 		
 		sqlSession.close();
+		return exist;
 		
-		return existId;
 	}
 	
+	public void memberDelete(String id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
+		sqlSession.delete("memberSQL.memberDelete", id);
+		sqlSession.commit();
+		sqlSession.close();
+	
+	}
 
 }
