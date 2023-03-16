@@ -2,6 +2,7 @@ package member.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,12 +25,7 @@ import member.bean.MemberDTO;
 
 public class MemberDAO {
 
-//	private String driver = "oracle.jdbc.driver.OracleDriver";
-//	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-//	private String username = "c##java";
-//	private String password = "1234";
-	
-	private SqlSessionFactory sqlSessionFactory;
+	private SqlSessionFactory sqlSessionFactory;	//클래스 안에 있는 모든 객체는 null로 초기화 되어있다.
 	private static MemberDAO memberDAO = new MemberDAO();
 
 	public static MemberDAO getInstance() {
@@ -41,9 +37,9 @@ public class MemberDAO {
 
 	public MemberDAO() {
 		try {
-			InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+			Reader reader = Resources.getResourceAsReader("conf/mybatis-config.xml");
 			
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			
 		} catch (IOException e) {
 			
@@ -51,13 +47,20 @@ public class MemberDAO {
 		}
 	}
 
+	public MemberDTO memberLogin(Map map){
+		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
+		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.memberLogin", map);
+		sqlSession.close();
+		return memberDTO;	
+				//여기서 id랑 pwd를 받아와서 select * from member where id=id and pwd=pwd를 거쳐 list에 값을 가지고 오겠지
+	}
+//	
 
 
 	public int memberWrite(MemberDTO memberDTO) {
-		int su;
 		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
 		
-		su = sqlSession.insert("memberSQL.memberWrite", memberDTO); //넘길 데이터
+		int su = sqlSession.insert("memberSQL.memberWrite", memberDTO); //넘길 데이터
 		sqlSession.commit();
 		sqlSession.close();
 		
@@ -66,14 +69,7 @@ public class MemberDAO {
 	}
 	
 	
-	public List<MemberDTO> memberLogin(Map<String, String> map){
-		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
-		List<MemberDTO> list = sqlSession.selectList("memberSQL.memberLogin", map);
-		sqlSession.close();
-		return list;	
-				//여기서 id랑 pwd를 받아와서 select * from member where id=id and pwd=pwd를 거쳐 list에 값을 가지고 오겠지
-	}
-//	
+	
 	public MemberDTO getMember(String id){ //updateForm.jsp의 memberDAO.getMember(id)의 값을 전달
 		SqlSession sqlSession = sqlSessionFactory.openSession(); //생성
 		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.getMember", id);

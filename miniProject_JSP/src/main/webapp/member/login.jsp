@@ -1,8 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ page import="member.bean.MemberDTO" %>
 <%@ page import="member.dao.MemberDAO" %>
 <%
@@ -10,14 +10,14 @@
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
 	
+	
+	//DB
+	MemberDAO memberDAO = MemberDAO.getInstance();
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("id", id);
 	map.put("pwd", pwd);
 
-	//DB
-	MemberDAO memberDAO = MemberDAO.getInstance();
-	/* MemberDTO memberDTO = memberDAO.memberLogin(id, pwd); */
-	List<MemberDTO> list = memberDAO.memberLogin(map);
+	MemberDTO memberDTO = memberDAO.memberLogin(map);
 	
 %>
 
@@ -28,12 +28,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% if(list == null) {
+<% if(memberDTO == null) {
 	//페이지 이동
 	response.sendRedirect("loginFail.jsp");
 	
 }else{
-	MemberDTO memberDTO = list.get(0);
 	//세션 생성
 	session.setAttribute("memName", memberDTO.getName());
 	session.setAttribute("memId", memberDTO.getId());

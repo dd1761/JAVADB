@@ -18,7 +18,6 @@ a:active{ color: black; text-decoration: none;}
 <div>
 <h2>*** 메인화면 *** </h2>
 <h3>
-
 <% if(session.getAttribute("memId") == null) { %>
 
 	<a href="./member/writeForm.jsp">회원가입</a><br>

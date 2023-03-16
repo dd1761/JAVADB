@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberSQL">
 	
-	<resultMap type="member" id="memberResult">
+	<!--<resultMap type="member" id="memberResult">
 		<result column="NAME" property="name"/>
 		<result column="ID" property="id"/>
 		<result column="PWD" property="pwd"/>
@@ -17,19 +17,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="ZIPCODE" property="zipcode"/>
 		<result column="ADDR1" property="addr1"/>
 		<result column="ADDR2" property="addr2"/>
-	</resultMap>
+	</resultMap>-->
+	
+	<!--로그인-->
+	<select id="memberLogin" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		SELECT * FROM member where id=#{id} and pwd=#{pwd}
+	</select>
 		
-	<insert id="memberWrite" parameterType="member" >
-		insert into member values(#{name}, #{id}, #{pwd}, #{gender}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3}, #{zipcode}, #{addr1}, #{addr2}, sysdate)
-	</insert> <!-- 넘어오는 데이터의 자료형-->
-	
-	<!--같은 이름을 찾아서 매핑을 한다.-->
-	<!--<select id="getmemberList" resultType="member.bean.memberDTO">
-		select * from membertable
-	</select>-->
-	
-	<!-- 만약 memberDTO의 필드명과 오라클 컬럼명이 틀린 경우-->
-	<select id="getMemberList" resultMap="memberResult">
+	<insert id="memberWrite" parameterType="member.bean.MemberDTO" >
+		insert into member values(#{name}, 
+								  #{id}, 
+								  #{pwd}, 
+								  #{gender}, 
+								  #{email1}, 
+								  #{email2}, 
+								  #{tel1}, 
+								  #{tel2}, 
+								  #{tel3}, 
+								  #{zipcode}, 
+								  #{addr1}, 
+								  #{addr2}, 
+								  sysdate)
+	</insert> 
+	<!--<select id="getMemberList" resultMap="memberResult">
 		select * from member
 	</select>
 	
@@ -45,31 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete member where id=#{id}
 	</delete>
 	
-	
-	<!--<select id="search" parameterType="java.util.Map" resultType="member">
-    	SELECT * FROM membertable where id like '%' || #{id} || '%' or  name like '%' || #{name} || '%'
-	</select>-->
-	
 	<select id="search" parameterType="java.util.Map" resultType="member">
-		<!-- XML -->
-    	<!--SELECT * FROM membertable where
-    	<if test="columnName == 'name'">
-			name like '%' || #{value} || '%'
-			
-		</if>
-		<if test="columnName == 'id'">
-			id like '%' || #{value} || '%'
-		</if> -->
 		
-		<!--SELECT * FROM membertable where
-    	<choose>다중if문 혹은 스위치문이라고 불림
-			<when test="columnName == 'name'">
-				name like '%' || #{value} || '%
-			</when>
-			<otherwise>
-				id like '%' || #{value} || '%'
-			</otherwise>
-		</choose>-->
 		SELECT * FROM member where ${columnName} like '%' || #{value} || '%'
 		
 	</select>
@@ -77,10 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="isExistId" parameterType="String" resultType="member">
 		select * from member where id=#{id}
 	</select>
+	-->
 	
-	<select id="memberLogin" parameterType="java.util.Map" resultType="member">
-		SELECT * FROM MEMBER where id=#{id} and pwd=#{pwd}
-	</select>
 	
 	
 </mapper>
