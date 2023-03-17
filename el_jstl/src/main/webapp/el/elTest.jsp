@@ -19,28 +19,43 @@
 	</tr>
 	
 	<tr>
-		<td align="center"></td>
-		<td align="center"></td>
+		<td align="center">\${25/3 }</td>
+		<td align="center">${25/3 }</td>
 	</tr>
 	
 	<tr>
-		<td align="center"></td>
-		<td align="center"></td>
+		<td align="center">\${25 div 3 }</td>
+		<td align="center">${25 div 3 }</td>	<!-- 나누기만 div로 사용가능 -->
 	</tr>
 	
 	<tr>
-		<td align="center"></td>
-		<td align="center"></td>
+		<td align="center">\${25 % 3 }</td>
+		<td align="center">${25 % 3 }</td>
 	</tr>
 	
 	<tr>
-		<td align="center"></td>
-		<td align="center"></td>
+		<td align="center">\${25 mod 3 }</td>
+		<td align="center">${25 mod 3 }</td>	<!-- 나머지구하기만 mod로 사용할 수 있음. -->
 	</tr>
 	
 	<tr>
-		<td align="center"></td>
-		<td align="center"></td>
+		<td align="center">\${25 < 3 }</td>
+		<td align="center">${25 < 3 }</td>
+	</tr>
+	
+	<tr>
+		<td align="center">\${25 ne 3 }</td>
+		<td align="center">${25 ne 3 }</td>
+	</tr>
+	
+	<tr>
+		<td align="center">\${header['host'] }</td>
+		<td align="center">${header['host'] }</td>
+	</tr>
+	
+	<tr>
+		<td align="center">\${header.host }</td>
+		<td align="center">${header.host }</td>
 	</tr>
 </table>
 </body>
