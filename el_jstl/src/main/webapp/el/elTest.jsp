@@ -25,7 +25,7 @@
 	
 	<tr>
 		<td align="center">\${25 div 3 }</td>
-		<td align="center">${25 div 3 }</td>	<!-- 나누기만 div로 사용가능 -->
+		<td align="center"><%-- ${25 div 3 } --%></td>	<!-- 나누기만 div로 사용가능 -->
 	</tr>
 	
 	<tr>
@@ -45,7 +45,7 @@
 	
 	<tr>
 		<td align="center">\${25 ne 3 }</td>
-		<td align="center">${25 ne 3 }</td>
+		<td align="center"><%-- ${25 ne 3 } --%></td>
 	</tr>
 	
 	<tr>

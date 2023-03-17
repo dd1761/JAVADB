@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="calcForm" method="get" action="elResult.jsp">
+<form action="elResult2.jsp">
+	<h3>자바클래스의 메소드를 이용</h3>
 		<table border="1" cellpadding="10" cellspacing="0" >
 			<tr>
 				<td width="70" align="center">X</td>
