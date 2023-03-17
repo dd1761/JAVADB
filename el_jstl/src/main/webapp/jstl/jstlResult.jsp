@@ -34,6 +34,35 @@
 		<c:when test="${param.color==('magenta') }">보라</c:when>
 		<c:otherwise>하늘</c:otherwise>
 	</c:choose>
+	</li><br>
+	
+	<li>
+	
+	취 미 : ${paramValues['hobby'][0] }
+		   ${paramValues['hobby'][1] }
+		   ${paramValues['hobby'][2] }
+		   ${paramValues['hobby'][3] }
+		   ${paramValues['hobby'][4] }
+	
+	</li>
+	
+	<li>
+	
+	취 미 : ${paramValues.hobby[0] }
+		   ${paramValues.hobby[1] }
+		   ${paramValues.hobby[2] }
+		   ${paramValues.hobby[3] }
+		   ${paramValues.hobby[4] }
+	
+	</li>
+	
+	<li>
+	
+	취 미 : 
+	<c:forEach var="data" items="${paramValues.hobby }">
+		${data }
+	</c:forEach>
+	
 	</li>
 </ul>
 </body>
