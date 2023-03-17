@@ -46,7 +46,7 @@
 		
 		<tr>
 			<td colspan="2" align="center">
-				<input type="button" value="SEND">
+				<input type="submit" value="SEND">
 				<input type="reset" value="CANCEL">
 			</td>
 		</tr>
