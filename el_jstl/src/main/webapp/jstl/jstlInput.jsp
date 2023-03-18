@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="jstlResult.jsp">
+<form method="post" action="jstlResult.jsp">
 	<table border="1" cellpadding="10" cellspacing="0" >
 		<tr>
 			<th width="70">이름</th>
