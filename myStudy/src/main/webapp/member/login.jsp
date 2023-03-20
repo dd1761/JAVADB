@@ -16,7 +16,7 @@
 	
 	map.put("id", id);
 	map.put("pwd", pwd);
-	MemberDTO memberDTO = memberDAO.memberLogin(map);
+	MemberDTO memberDTO = memberDAO.mememberLogin(map);
 %>
 <!DOCTYPE html>
 <html>
