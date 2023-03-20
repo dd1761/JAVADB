@@ -8,7 +8,7 @@
 </head>
 <body>
 
-결과 = ${requestScope.list }
-
+결과 = ${requestScope.list } <br> <br>
+세번째 항목 = ${ requestScope.list[2] }
 </body>
 </html>

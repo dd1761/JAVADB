@@ -18,7 +18,9 @@ list.add("여우");
 //객체는 주소로 넘길 수 없다
 request.setAttribute("list", list);
 
-//페이지 이동
-response.sendRedirect("sendResult.jsp");
+RequestDispatcher dispatcher = request.getRequestDispatcher("forwardResult.jsp"); //상대번지를 써주어야 함
+dispatcher.forward(request, response); // 제어권 넘기기
 
 %>
+
+<%-- <jsp:forward page="forwardResult.jsp" /> --%>

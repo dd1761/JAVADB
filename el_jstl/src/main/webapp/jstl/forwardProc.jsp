@@ -18,6 +18,10 @@ list.add("여우");
 //객체는 주소로 넘길 수 없다
 request.setAttribute("list", list);
 
+
+//페이지 이동
+//response.sendRedirect("sendResult.jsp");
 %>
+
 
 <jsp:forward page="forwardResult.jsp" />
