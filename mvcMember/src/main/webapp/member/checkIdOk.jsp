@@ -8,6 +8,7 @@
 </head>
 <body>
 ${param.id }는 사용가능
+<br>
 <input type="button" value="사용하기" onclick="checkIdClose('${param.id}')">
 
 <script type="text/javascript">
