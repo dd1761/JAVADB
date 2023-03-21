@@ -1,8 +1,11 @@
 package com.control;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -27,9 +30,66 @@ public class ControlServlet extends HttpServlet {
 	//init 는 web.xml에서 한번만 읽어오기 때문에 init을 사용한다.
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-		super.init(config);
+		String propertyConfig = config.getInitParameter("propertyConfig");
+		System.out.println("propertyConfig = " + propertyConfig);
+		
+		String realFolder = config.getServletContext().getRealPath("/WEB-INF");
+		String realPath = realFolder + "/" + propertyConfig;
+		System.out.println("realPath = " + realPath);
+		
+		FileInputStream fin = null;
+	      Properties properties = new Properties();
+	      
+	      try {
+	         
+	         fin = new FileInputStream(realPath);
+	                     
+	            properties.load(fin);
+	            System.out.println("properties = "+properties);
+	            
+	         } catch (IOException e) {
+	            e.printStackTrace();
+	         }finally{
+	            try {
+	               fin.close();
+	            } catch (IOException e) {
+	               e.printStackTrace();
+	            }
+	         }
+	         System.out.println();
+	         
+	         Iterator it = properties.keySet().iterator();
+	         while(it.hasNext()) {
+	            String key = (String)it.next();
+	            System.out.println("key = "+key);
+	            
+	            String className = properties.getProperty(key);
+	            System.out.println("className = "+className);
+	            
+	            try {
+	               Class<?> classType = Class.forName(className);
+	               Object ob = classType.newInstance();
+	               
+	               System.out.println("ob = "+ob);
+	               
+	               map.put(key, ob);
+	               
+	            } catch (ClassNotFoundException e) {
+	               e.printStackTrace();
+	            } catch (InstantiationException e) {
+	               e.printStackTrace();
+	            } catch (IllegalAccessException e) {
+	               e.printStackTrace();
+	            } catch (IllegalArgumentException e) {
+	               e.printStackTrace();
+	            } 
+	            
+	            System.out.println();
+	         }//while
 	}
+	
+	
+	
 	
 //	execute를 사용함으로써 get방식으로 받아오거나 post방식으로 받아와도 전부 execute로 보낼 수 있다.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
