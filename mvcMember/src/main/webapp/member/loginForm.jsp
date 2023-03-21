@@ -17,7 +17,7 @@ div {
 <h3>
 <img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style="cursor: pointer;">로그인
 </h3>
-<form name="loginForm" method="post" action="login.jsp">
+<form name="loginForm" method="post" action="/mvcMember/member/login.do"> <!-- http://localhost:8080/mvcMember/member/login.do -->
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>아이디</th>
@@ -35,7 +35,7 @@ div {
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="로그인" onclick="checkLogin()"> 
-					<input type="button" value="회원가입" onclick="location.href='writeForm.do'">
+					<input type="button" value="회원가입" onclick="location.href='/mvcMember/member/writeForm.do'"> <!-- http://localhost:8080/mvcMember/member/writeForm.do -->
 				</td>
 			</tr>
 		</table>
@@ -49,7 +49,8 @@ div {
 			document.getElementById("idDiv").innerText = "아이디를 입력하세요";
 		else if(document.getElementById("pwd").value == "") 
 			document.getElementById("pwdDiv").innerText = "비밀번호 입력";
-		else document.loginForm.submit();
+		else 
+			document.loginForm.submit();
 	}
 </script>
 </body>
