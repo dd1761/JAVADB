@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-${param.id }는 사용가능
+<%-- ${param.id }는 사용가능 --%>
+${requestScope.id}는 사용 가능
 <br>
-<input type="button" value="사용하기" onclick="checkIdClose('${param.id}')">
+<input type="button" value="사용하기" onclick="checkIdClose('${id}')">
 
 <script type="text/javascript">
 function checkIdClose(id){	

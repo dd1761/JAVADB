@@ -14,7 +14,7 @@ div{
 </style>
 </head>
 <body>
-<form name="writeForm" method="post" action="write.do">
+<form name="writeForm" method="post" action="boardwrite.do">
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>이름</th>
