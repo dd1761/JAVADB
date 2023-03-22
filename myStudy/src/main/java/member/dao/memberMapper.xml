@@ -3,8 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberSQL">
-	<select id="memberLogin" parameterType="java.util.Map" resultMap="member">
-		select * from member where id=#{id} and pwd=#{pwd}
+	
+	<select id="memberLogin" parameterType="java.util.Map" resultType="member">
+		SELECT * FROM member where id=#{id} and pwd=#{pwd}
 	</select>
 	
 </mapper>

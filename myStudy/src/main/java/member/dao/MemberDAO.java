@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import member.bean.MemberDTO;
 
@@ -23,6 +24,9 @@ public class MemberDAO {
 		
 		try {
 			Reader reader = Resources.getResourceAsReader("conf/mybatis-config.xml");
+			
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+			
 		} catch (IOException e) {
 			
 			e.printStackTrace();

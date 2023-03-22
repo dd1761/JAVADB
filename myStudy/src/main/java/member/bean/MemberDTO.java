@@ -1,14 +1,18 @@
 package member.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberDTO {
 
 	
-	@Getter
-	@Setter
 	private String name;
 	@NonNull
 	private String id;
