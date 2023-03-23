@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function f(x, y){ //정의, 구현
+	var z = x + y;
+	
+	if(z < 10) {
+		return;
+	}
+	
+	return z;
+}
+
+let a = f(2, 1); //호출 
+
+let b = f(5, 7);
+let c = f(10, 5);
+
+document.write("<h3>" + a + "</h3>"); //undefined 값을 찾지 못하였다. null이 아니다.
+document.write("<h3>" + b + "</h3>");
+document.write("<h3>" + c + "</h3>");
+</script>
+</body>
+</html>
