@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,19 +61,31 @@ html {
 <div id="wrap">
 	<div id="header">
 		<h1>
-			<img src="./image/mokoko_03.gif" width="70" height="70">MVC를 이용한 미니 프로젝트
+			<img src="/miniProject_jQuery/image/mokoko_03.gif" width="70" height="70"
+			onclick="location.href='/miniProject_jQuery/index.jsp'" style="cursor: pointer">MVC를 이용한 미니 프로젝트
 		</h1>
 	</div>
 
 	<div id="container">
 		<div id="nav">
+		<c:if test="${ empty memName }">
 			<jsp:include page="./main/nav.jsp"></jsp:include>
+		</c:if>
+		<c:if test="${ not empty memName }">
+			${memName} 님이 로그인 <br>
+			<input type="button" value="로그아웃" onclick="location.href='/miniProject_jQuery/member/logout.do'">
+		</c:if>
 		</div>
 		<div id="section">
 			<h3>
+				<c:if test="${ empty display }">
 				저희 홈페이지를 방문해주셔서 감사합니다.
 				Have a nice day!!
-				<img src="./image/mokoko_01.gif">
+				<img src="/miniProject_jQuery/image/mokoko_01.gif">
+				</c:if>
+				<c:if test="${ not empty display }">
+					<jsp:include page="${display }" />
+				</c:if>
 			</h3>
 		</div>
 	</div>

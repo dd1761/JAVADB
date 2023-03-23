@@ -17,7 +17,7 @@ form[name="loginForm"] div {
 <h3>
 로그인
 </h3>
-<form name="loginForm" method="post" action="login.jsp">
+<form name="loginForm" method="post" action="login.do">
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>아이디</th>

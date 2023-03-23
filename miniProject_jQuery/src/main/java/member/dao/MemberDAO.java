@@ -38,7 +38,7 @@ public class MemberDAO {
 
 	public MemberDAO() {
 		try {
-			Reader reader = Resources.getResourceAsReader("conf/mybatis-config.xml");
+			Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
 			
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			
