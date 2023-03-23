@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function insertQuestion(num){
+	alert(num);
+	
+	var str = prompt("사칙연산의 수식을 입력하세요. (예: 100 + 50)", "");
+	var answer = eval(str);
+	var result = "<font color='red'>" + str + " = " + answer + "</font>";
+	
+	document.getElementById("question").innerHTML = result;
+}
+</script>
+</head>
+<body onload="insertQuestion(222)">
+
+<script type="text/javascript">
+	insertQuestion(111); 
+	//ERROR 위에서 아래로 차례대로 실행하고 오면서 111이란 값을 가지고 위로 간다. 
+	//function을 수행하고 result값을 question에 넣으려고 하는데 
+	//아직 question이라는 값을 읽지 못했기 때문에 question을 모른다.
+	//하지만 222는 onload를 사용하기 떄문에 값이 나온다. onload는 html전체를 읽고 나서 수행하기에 question을 알고 있다.
+</script>
+
+<h1 id="question"></h1>
+</body>
+</html>
