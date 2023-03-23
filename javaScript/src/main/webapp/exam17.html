@@ -28,3 +28,21 @@ function insertQuestion(num){
 <h1 id="question"></h1>
 </body>
 </html>
+
+<!-- 
+
+1. body태그 안의 모든 내용을 실행한 다음에 onload()가 처리된다.
+body태그 읽던 중 자바스크립트의 insertQuestion(111);이 호출된다.
+=>error 발생 (document.getElementById("question").innerHTML = result;)
+=> 아직 body태그의 <h1 id="question"></h1> 부분을 아직 안읽어서 나오는 error이다.
+
+2. body태그 안의 모든 내용을 실행한 다음에 onload()가 처리된다.
+
+3. onload="insertQuestion(222)" 에서 호출이 되면 이번에는 error가 안 나온다.
+=> body태그의 <h1 id="question"></h1> 부분을 읽었기 때문에 error가 안나온다.
+
+-->
+
+
+
+
