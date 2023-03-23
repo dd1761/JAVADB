@@ -26,6 +26,19 @@ var r3 = num2 + 1;
 document.write("r1=" + r1 + "<br>"); //1001
 document.write("r2=" + r2 + "<br>"); //101
 document.write("r3=" + r3 + "<br>"); //101
+
+var value2 = "100.6";
+var num3 = Number(value2); //100.6 문자열을 숫자로 리턴
+var num4 = parseInt(value2);  //100, 반올림x
+var num5 = parseFloat(value2); //100.6
+
+var r4 = num3 + 1; 
+var r5 = num4 + 1; 
+var r6 = num5 + 1;
+
+document.write("r4=" + r4 + "<br>"); //101.6
+document.write("r5=" + r5 + "<br>"); // 101, 
+document.write("r6=" + r6 + "<br>"); //101.6
 </script>
 </body>
 </html>
