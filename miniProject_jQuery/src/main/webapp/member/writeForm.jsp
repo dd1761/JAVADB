@@ -29,7 +29,7 @@
 				<td>
 					<input type="text" name="id" id="id" size="30"  placeholder="아이디 입력">
 					<input type="hidden" name="check" id="check" value="">
-					<input type="button" value="중복체크" onclick="checkId()"> 
+					<input type="button" value="중복체크" id="checkIdBtn"> 
 					<div id="idDiv"></div>
 				</td>
 			</tr>

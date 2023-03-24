@@ -68,13 +68,7 @@ html {
 
 	<div id="container">
 		<div id="nav">
-		<c:if test="${ empty memName }">
-			<jsp:include page="./main/nav.jsp"></jsp:include>
-		</c:if>
-		<c:if test="${ not empty memName }">
-			${memName} 님이 로그인 <br>
-			<input type="button" value="로그아웃" onclick="location.href='/miniProject_jQuery/member/logout.do'">
-		</c:if>
+			<jsp:include page="./main/nav.jsp" />
 		</div>
 		<div id="section">
 			<h3>
