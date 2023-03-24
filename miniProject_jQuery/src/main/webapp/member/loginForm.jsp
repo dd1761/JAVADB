@@ -17,7 +17,7 @@ form[name="loginForm"] div {
 <h3>
 로그인
 </h3>
-<form name="loginForm" method="post" action="login.do">
+<form name="loginForm" method="post" action="/miniProject_jQuery/member/login.do">
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>아이디</th>
@@ -34,7 +34,7 @@ form[name="loginForm"] div {
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="로그인" onclick="checkLogin()"> 
-					<input type="button" value="회원가입" onclick="location.href='writeForm.html'">
+					<input type="button" value="회원가입" onclick="location.href='miniProject_jQuery/member/writeForm.do'">
 				</td>
 			</tr>
 		</table>
