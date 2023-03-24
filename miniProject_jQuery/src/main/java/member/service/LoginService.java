@@ -40,7 +40,7 @@ public class LoginService implements CommandProcess {
 			session.setAttribute("memPwd", memberDTO.getPwd());
 			session.setAttribute("memEmail", memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
 			
-			return "/index.jsp";
+			return "/member/loginOk.jsp";
 		}
 
 	}
