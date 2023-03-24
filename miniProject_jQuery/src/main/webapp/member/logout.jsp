@@ -10,10 +10,11 @@
 <body>
 <h3>로그아웃</h3>
 
+<script type="text/javascript"></script>
 <script type="text/javascript">
 window.onload=function(){
 	alert("로그아웃");
-	location.href="/mvcMember/member/loginForm.do";
+	location.href="/miniProject_jQuery/member/loginForm.do";
 }
 </script>
 </body>

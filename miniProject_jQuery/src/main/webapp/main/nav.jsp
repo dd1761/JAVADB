@@ -11,5 +11,8 @@
 	
 	<c:if test="${memId != null }">
 		<h3>${memId}님 로그인</h3>
+		<input type="button" value="로그아웃" id="logoutBtn">
 	</c:if>
 </div>
+<!-- CDN 방식 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
