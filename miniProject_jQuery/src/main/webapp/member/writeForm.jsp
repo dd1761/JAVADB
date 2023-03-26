@@ -116,7 +116,6 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script type="text/javascript" src="../js/member.js"> /* 상대주소 */
-
 <!-- 절대주소 -->
 /* <script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js"> */
 </script>
@@ -136,8 +135,6 @@ function checkId(){
 		window.open("/mvcMember/member/checkId.do?id=" + id,"checkId","width=500 height=150 left=900 top=200");
 		
 	}
-
-
 }
 </script>
 
