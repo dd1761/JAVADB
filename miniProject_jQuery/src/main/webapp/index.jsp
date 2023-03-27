@@ -64,6 +64,7 @@ html {
 			<img src="/miniProject_jQuery/image/mokoko_03.gif" width="70" height="70"
 			onclick="location.href='/miniProject_jQuery/index.jsp'" style="cursor: pointer">MVC를 이용한 미니 프로젝트
 		</h1>
+		<jsp:include page="./main/menu.jsp" />
 	</div>
 
 	<div id="container">
