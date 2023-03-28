@@ -8,7 +8,30 @@ $(document).ready(function(){
 				   		 // 객체를 json으로 변환시켜서 가져와야 한다.
 	    
 	    success: function(data){
-			console.log(JSON.stringify(data));
+			//console.log(JSON.stringify(data));
+			//console.log(data.list[0].seq);
+			//console.log(data.list[1].name);
+			
+			$.each(data.list, function(index, items){
+				console.log(index + ", seq=" + items.seq + ', name=' + items.name);
+				
+				$('<tr/>').append($('<td/>',{
+					align: 'center',
+					text: items.seq
+				})).append($('<td/>',{
+					text: items.subject
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.id
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.logtime
+				})).append($('<td/>',{
+					align: 'center',
+					text: items.hit
+				})).appendTo($('#boardListTable'))
+			});
+			
 		},
 		error: function(err){
 			console.log(err);

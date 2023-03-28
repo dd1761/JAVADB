@@ -56,7 +56,7 @@ public class GetBoardListService implements CommandProcess {
 				temp.put("pseq", boardDTO.getPseq());
 				temp.put("reply", boardDTO.getReply());
 				temp.put("hit", boardDTO.getHit());
-				temp.put("logtime", boardDTO.getLogtime()); //Data 타입을 -> String타입으로 변환시켜야한다.
+				temp.put("logtime", sdf.format(boardDTO.getLogtime())); //Data 타입을 -> String타입으로 변환시켜야한다.
 				
 				array.add(temp);
 			}//for

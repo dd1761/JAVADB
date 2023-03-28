@@ -36,7 +36,7 @@
 
 <img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" 
 onclick="location.href='/miniProject_jQuery/index.jsp'" style="cursor: pointer;">
-<table border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
+<table id="boardListTable" border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
 	<tr>
 		<th width="100">글번호</th>
 		<th width="400">제목</th>
