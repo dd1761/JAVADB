@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+<h1>this의 사용</h1>
+<div id="input">
+	<h2>단독 개체의 확인</h2>
+	<div id="singleButton">클릭하세요.</div>
+	
+	<h2>복수 개체의 확인</h2>
+	<div>
+		<button class="multiButton">클릭하세요.</button>
+		<button class="multiButton">클릭하세요.</button>
+		<button class="multiButton">클릭하세요.</button>
+		<button class="multiButton">클릭하세요.</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#singleButton').click(function(){
+		//$('#singleButton').html('감사합니다');
+		$(this).html('감사합니다');
+	});
+	
+	$('.multiButton').click(function(){
+		//$('.multiButton').html('감사합니다'); // 모두 바뀐다.
+		$(this).html('감사합니다'); // 4개중에서 클릭한 객체만 바뀐다.
+		//만약에 class 속성이 아니라 id 속성 이었다면 첫번째 것만 바뀐다.
+		//$('#multiButton').html('감사합니다');
+	});
+});
+</script>
+</body>
+</html>

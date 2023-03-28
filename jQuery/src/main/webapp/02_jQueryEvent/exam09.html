@@ -39,7 +39,11 @@ $(function() {
 		$('#result').text('이름의 입력값이 변경되었습니다.');
 	});
 	
-	$('input[name="gender"]').change(function(){
+	$('input[name="gender"]').change(function(e){
+		console.log(e.target);	//<input type="radio" name="gender" value="남자">
+		console.log(e.target.tagName);	//INPUT(대문자)
+		console.log(e.target.value);	//남자 or 여자
+		alert(e.target.value);	//주소, [object, HTMLInputElement]
 		$('#result').text('성별이 변경되었습니다.');
 	});
 	
