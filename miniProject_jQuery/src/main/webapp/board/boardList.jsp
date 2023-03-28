@@ -31,8 +31,11 @@
 </style>
 </head>
 <body>
+
+<input type="text" id="pg" value="${pg }">
+
 <img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" 
-onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style="cursor: pointer;">
+onclick="location.href='/miniProject_jQuery/index.jsp'" style="cursor: pointer;">
 <table border="1" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
 	<tr>
 		<th width="100">글번호</th>
@@ -42,43 +45,18 @@ onclick="location.href='http://localhost:8080/miniProject_JSP/index.jsp'" style=
 		<th width="150">작성일</th>
 	</tr>
 	
-	 <c:if test="${requestScope.list != null}">
-   <c:forEach var="boardDTO" items="${list}">
-      <tr>
-         <td text-align="center">${boardDTO.seq}</td>
-         <td>
-            <a class="subjectA" href="#" onclick="isLogin('${memId}', ${boardDTO.seq}, ${pg})">
-               ${boardDTO.subject}
-            </a>
-         </td>
-         <td align="center">${boardDTO.id}</td>
-         <td align="center">${boardDTO.hit}</td>
-         <td align="center">
-         	<fmt:formatDate value="${boardDTO.logtime}" pattern="yyyy.MM.dd" />
-         </td>
-      </tr>
-   </c:forEach>
-</c:if>
-
+	<!-- 동적처리 -->
 </table>
-<div style="solid blue; margin-top: 15px; width: 850px; text-align: center;">
-	 ${boardPaging.pagingHTML}
 
-</div>
+<div style="solid blue; margin-top: 15px; width: 850px; text-align: center;"></div>
 	
 <script type="text/javascript">
 function boardPaging(pg){
 	location.href = "boardList.do?pg=" + pg;
 }
 </script>
-<script type="text/javascript">
-function isLogin(memId, seq, pg){
-		alert(memId + ", " + seq)
-		if(memId == 'null') 
-			alert("먼저 로그인 하세요");
-		else
-			location.href="boardView.do?seq=" + seq + "&pg=" + pg;
-	}
-</script>
+<script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="../js/boardList.js"></script>
+
 </body>
 </html>

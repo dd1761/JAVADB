@@ -24,41 +24,10 @@ public class BoardListService implements CommandProcess {
 		
 		int pg = Integer.parseInt(request.getParameter("pg"));
 
-		//세션
-		String memId = (String)session.getAttribute("memId");
-		
-		
-		//DB - 1페이지당 5개씩 출력
-		BoardDAO boardDAO = BoardDAO.getInstance();
-		
-		int endNum = pg*5;
-		int startNum = endNum-4;
-		
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
-		
-		List<BoardDTO> list = boardDAO.boardList(map);
-		//ArrayList<BoardDTO> arrayList = new ArrayList<BoardDTO>();
-		
-		//페이징 처리
-		int totalA = boardDAO.getTotalA();//총 글수
-		
-		BoardPaging boardPaging = new BoardPaging();
-		boardPaging.setCurrentPage(pg);
-		boardPaging.setPageBlock(3);
-		boardPaging.setPageSize(5);
-		boardPaging.setTotalA(totalA);
-		
-		boardPaging.makePagingHTML();
-		
 		request.setAttribute("pg", pg);
-		request.setAttribute("list", list);
-		request.setAttribute("boardPaging", boardPaging);
+		request.setAttribute("display", "/board/boardList.jsp");
 		
-		
-		
-		return "/board/boardList.jsp";
+		return "/index.jsp";
 	}
 
 }

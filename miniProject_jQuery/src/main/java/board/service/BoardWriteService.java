@@ -18,16 +18,13 @@ public class BoardWriteService implements CommandProcess {
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		
-
-		
 		//세션
 		HttpSession session = request.getSession(); 
-		// jsp에 이미 내장객체로 session이 존재하기 때문에 안적어도 사용가능하다.
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
+		String id = (String)session.getAttribute("memId");
+		String name = (String)session.getAttribute("memName");
+		String email = (String)session.getAttribute("memEmail");
 				
-		Map<String, String> map = new HashMap();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("name", name);
 		map.put("email", email); 

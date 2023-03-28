@@ -34,6 +34,10 @@ $(function(){
 		$(this).html('감사합니다'); // 4개중에서 클릭한 객체만 바뀐다.
 		//만약에 class 속성이 아니라 id 속성 이었다면 첫번째 것만 바뀐다.
 		//$('#multiButton').html('감사합니다');
+		
+		var index = $(this).index();
+		var result = index + '번째 요소를 선택하셨습니다';
+		$(this).html(result);
 	});
 });
 </script>
