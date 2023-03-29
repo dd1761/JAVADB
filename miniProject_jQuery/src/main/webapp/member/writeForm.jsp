@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-<form name="writeForm" method="post" action="boardwrite.do" id="writeForm">
+<form name="writeForm" action="/miniProject_jQuery/member/write.do" method="post" id="writeForm" >
 		<table border="1" cellpadding="5" cellspacing="0">
 			<tr>
 				<th>이름</th>
