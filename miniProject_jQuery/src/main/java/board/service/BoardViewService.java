@@ -2,32 +2,20 @@ package board.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 
 import com.control.CommandProcess;
 
-import board.bean.BoardDTO;
-import board.bean.BoardPaging;
-import board.dao.BoardDAO;
-
-public class BoardListService implements CommandProcess {
+public class BoardViewService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
 		
-		
+		int seq = Integer.parseInt(request.getParameter("seq"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
-
-
+		
+		request.setAttribute("seq", seq);
 		request.setAttribute("pg", pg);
-
-		request.setAttribute("display", "/board/boardList.jsp");
+		request.setAttribute("display", "/board/boardView.jsp");
 		
 		return "/index.jsp";
 	}

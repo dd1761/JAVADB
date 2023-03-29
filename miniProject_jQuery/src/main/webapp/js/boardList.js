@@ -48,7 +48,7 @@ $(document).ready(function(){
 					console.log(seq);
 					var pg = $('#pg').val();
 					
-					location.href = '/miniProject_jQeury/board/boardView.do?seq='+seq+'&pg='+pg;
+					location.href = '/miniProject_jQuery/board/boardView.do?seq='+seq+'&pg='+pg;
 
 				}
 			});
