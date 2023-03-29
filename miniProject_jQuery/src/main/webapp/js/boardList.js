@@ -19,17 +19,38 @@ $(document).ready(function(){
 					align: 'center',
 					text: items.seq
 				})).append($('<td/>',{
+					
+				}).append($('<a/>',{
+					href: '#',
+					class: 'subjectA',
 					text: items.subject
-				})).append($('<td/>',{
+				}))).append($('<td/>',{
 					align: 'center',
 					text: items.id
 				})).append($('<td/>',{
 					align: 'center',
-					text: items.logtime
+					text: items.hit
 				})).append($('<td/>',{
 					align: 'center',
-					text: items.hit
+					text: items.logtime
 				})).appendTo($('#boardListTable'))
+			});
+			//페이징 처리
+			$('#boardPagingDiv').html(data.pagingHTML);
+			
+			//로그인 여부
+			$('.subjectA').click(function(){
+				if($('#memId').val() == ''){
+					alert('먼저 로그인하세요');
+				}else {
+					//console.log(seq.prop('tagName'));
+					var seq = $(this).parent().prev().text(); //$(this).부모.형님.값
+					console.log(seq);
+					var pg = $('#pg').val();
+					
+					location.href = '/miniProject_jQeury/board/boardView.do?seq='+seq+'&pg='+pg;
+
+				}
 			});
 			
 		},

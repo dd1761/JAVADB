@@ -28,11 +28,19 @@
 	/* board: 1px solid black; */
 }
 
+#boardListTable th {
+	font-size: 12pt;
+}
+
+#boardListTable td {
+	font-size: 10pt;
+}
 </style>
 </head>
 <body>
 
 <input type="text" id="pg" value="${pg }">
+<input type="text" id="memId" value="${memId }">
 
 <img src="../image/mokoko_01.gif" width="100" height="100" alt="모코코" 
 onclick="location.href='/miniProject_jQuery/index.jsp'" style="cursor: pointer;">
@@ -48,11 +56,11 @@ onclick="location.href='/miniProject_jQuery/index.jsp'" style="cursor: pointer;"
 	<!-- 동적처리 -->
 </table>
 
-<div style="solid blue; margin-top: 15px; width: 850px; text-align: center;"></div>
+<div id="boardPagingDiv" style="solid blue; margin-top: 15px; width: 850px; text-align: center;"></div>
 	
 <script type="text/javascript">
 function boardPaging(pg){
-	location.href = "boardList.do?pg=" + pg;
+	location.href = "/miniProject_jQuery/board/boardList.do?pg=" + pg;
 }
 </script>
 <script type="text/javascript" src="../js/jquery-3.6.4.min.js"></script>
