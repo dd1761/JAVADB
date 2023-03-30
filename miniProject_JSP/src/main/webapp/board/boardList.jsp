@@ -9,6 +9,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 
+
 <%
 	//데이터
 	int pg = Integer.parseInt(request.getParameter("pg"));
