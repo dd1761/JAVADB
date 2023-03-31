@@ -18,10 +18,10 @@
 </style>
 </head>
 <body>
-	<form id="boardViewForm" method="post">
-		<input type="text" id="seq" value="${requestScope.seq}">
-		<input type="text" id="pg" value="${requestScope.pg}">
-		<input type="text" id="memId" value="${memId }">
+	<form id="boardViewForm">
+		<input type="text" id="seq" name="seq" value="${requestScope.seq}">
+		<input type="text" id="pg" name="pg" value="${requestScope.pg}">
+		<input type="text" id="memId" name="memId" value="${memId }">
 		<h3>
 			작성한 글확인
 		</h3>

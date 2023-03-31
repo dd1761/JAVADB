@@ -28,3 +28,18 @@ $(document).ready(function(){
 		}
 	});
 });
+
+//글수정 form
+$('#boardUpdateFormBtn').click(function(){
+	$('#boardViewForm').attr('action', '/miniProject_jQuery/board/boardUpdateForm.do');
+	$('#boardViewForm').submit();
+	
+});
+
+$('#boardReplyFormBtn').click(function(){
+	$('#boardViewForm').attr('action', '/miniProject_jQuery/board/boardReplyForm.do');
+	$('#boardViewForm').submit();
+	
+});
+
+
