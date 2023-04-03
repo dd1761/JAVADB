@@ -63,4 +63,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="boardReply3" parameterType="int">
 		update board set reply=reply+1 where seq=#{seq}
 	</update>
+	
+	<!-- 글수정 -->
+	<update id="boardUpdate" parameterType="java.util.Map">
+		update board set subject=#{subject}, content=#{content}, logtime=sysdate where seq=#{seq}
+	</update>
 </mapper>

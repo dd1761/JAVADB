@@ -60,8 +60,6 @@ $(function(){
 				type: 'post',
 				url: '/miniProject_jQuery/board/boardWrite.do',
 				data: $('#boardWriteForm').serialize(),
-				/*2. 'subject='+$('#subject').val()+'&content='+$('#content').val() */
-				/*3. {'subject': $('#subject').val(), 'content': $('#content').val()}  */
 				success: function(){
 					alert('글작성 완료!!');
 					location.href='/miniProject_jQuery/board/boardList.do?pg=1';

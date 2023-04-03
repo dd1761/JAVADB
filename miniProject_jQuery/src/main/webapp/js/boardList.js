@@ -53,6 +53,8 @@ $(document).ready(function(){
 			$('.subjectA').click(function(){
 				if($('#memId').val() == ''){
 					alert('먼저 로그인하세요');
+					
+					location.href = '/miniProject_jQuery/member/loginForm.do';
 				}else {
 					//console.log(seq.prop('tagName'));
 					var seq = $(this).parent().prev().text(); //$(this).부모.형님.값
