@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
-import board.dao.BoardDAO;
-
-public class BoardDeleteService implements CommandProcess {
+public class BoardDeleteFormService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
@@ -15,12 +13,10 @@ public class BoardDeleteService implements CommandProcess {
 		//데이터
 		String seq = request.getParameter("seq");
 		
-		//DB
-		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.boardDelete(seq);
-		System.out.println("hi"  +seq);
 		//응답
-		return "/board/boardDelete.jsp";
+		request.setAttribute("seq", seq);
+		request.setAttribute("display", "/board/boardDeleteForm.jsp");
+		return "/index.jsp";
 	}
 
 }

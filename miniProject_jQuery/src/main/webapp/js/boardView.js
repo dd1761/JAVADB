@@ -36,9 +36,16 @@ $('#boardUpdateFormBtn').click(function(){
 	
 });
 
+//글삭제 - 1페이지로 보여준다.
+$('#boardDeleteBtn').click(function(){
+	$('#boardViewForm').attr('action', '/miniProject_jQuery/board/boardDeleteForm.do');
+	$('#boardViewForm').submit(); // seq, pg
+});
+
+//답글쓰기 폼
 $('#boardReplyFormBtn').click(function(){
 	$('#boardViewForm').attr('action', '/miniProject_jQuery/board/boardReplyForm.do');
-	$('#boardViewForm').submit();
+	$('#boardViewForm').submit(); //seq, pg
 	
 });
 
