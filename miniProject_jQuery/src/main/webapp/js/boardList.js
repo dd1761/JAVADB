@@ -22,7 +22,7 @@ $(document).ready(function(){
 					
 				}).append($('<a/>',{
 					href: '#',
-					class: 'subjectA',
+					class: 'subjectA subjectA_'+items.seq,
 					text: items.subject
 				}))).append($('<td/>',{
 					align: 'center',
@@ -34,7 +34,18 @@ $(document).ready(function(){
 					align: 'center',
 					text: items.logtime
 				})).appendTo($('#boardListTable'))
-			});
+				
+				//답글
+				for(var i=1; i<=items.lev; i++){
+					$('.subjectA_'+items.seq).before('&emsp;')
+				}
+				if(items.pseq != 0){
+					$('.subjectA_'+items.seq).before($('<img/>', {
+						'src' : '/miniProject_jQuery/image/reply.gif'
+					}));
+				}
+			}); //each(for문)
+			
 			//페이징 처리
 			$('#boardPagingDiv').html(data.pagingHTML);
 			
@@ -52,6 +63,8 @@ $(document).ready(function(){
 
 				}
 			});
+			
+			
 			
 		},
 		error: function(err){
