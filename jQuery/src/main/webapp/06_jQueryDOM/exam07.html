@@ -144,9 +144,73 @@ $(function(){
 		var new_li = $('<li>/');
 		new_li.addClass('comment_item');
 		
+		//<p class="writer"></p>
+		var writer_p = $('<p>');
+		writer_p.addClass('writer');
+		
+		//<span class="name">$('#user_name').val() + '님'</span>
+		var name_span = $('<span>');
+		name_span.addClass('name');
+		name_span.html($('#user_name').val() + '님');
+		
+		//<span> / (2023-04-03 12:32:15) yy년 mm월 dd일 hh시 mi분 ss초 </span>
+		var date_span = $('<span>');
+		date_span.html(' / ' + today + ' ');
+		
+		
+		//<input type="button" value="삭제하기" class="delete_btn"></input>
+		var del_input = $('<input>');
+		del_input.attr({
+			'type': 'button',
+			'value': '삭제하기'
+		});
+		del_input.addClass('delete_btn');
+		
+		//<p>$('#comment').val()</p>
+		var content_p = $('<p>');
+		content_p.html($('#comment').val());
+		
+		writer_p.append(name_span).append(date_span).append(del_input);
+		
+		new_li.append(writer_p).append(content_p);
+		
+		$('#comment_list').append(new_li);
+		
+		$('#user_name').val('');
+		$('#comment').val('');
+		
 		return false;
+	});
+	
+	//삭제하기
+	//$('.delete_btn').click(function(){ - 동적으로 삭제 버튼이 들어오기 떄문에 이벤트 처리가 안된다.
+	//동적 처리
+	//부모.on
+	$(document).on('click', '.delete_btn', function(){
+		if(confirm('선택하신 항목을 삭제하시겠습니까?')){
+			$(this).parents('.comment_item').remove();
+		}
 	});
 });
 </script>
 </body>
 </html>
+
+
+<!-- 
+* on() 함수
+
+1. 비동적
+$("요소").on("이벤트", function() {
+   ... 이벤트 처리 ...
+});
+
+2. 동적
+- 앞으로 동적으로 추가할 요소에 대한 이벤트를 미리 정의해 놓는 기능이다.
+- 새로 추가될 요소에 대한 이벤트이기 때문에 이 이벤트가 정의되는 시점에서는 대상이 
+  존재하지 않기 때문에, 이 이벤트는 document 객체에 설정해야 한다.
+
+$(document).on( "이벤트", "셀렉터", function() {
+   ... 이벤트 처리 ...
+});
+ -->
