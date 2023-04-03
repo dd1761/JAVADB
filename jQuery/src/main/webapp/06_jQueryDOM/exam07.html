@@ -185,7 +185,7 @@ $(function(){
 	//삭제하기
 	//$('.delete_btn').click(function(){ - 동적으로 삭제 버튼이 들어오기 떄문에 이벤트 처리가 안된다.
 	//동적 처리
-	//부모.on
+	//부모.on 
 	$(document).on('click', '.delete_btn', function(){
 		if(confirm('선택하신 항목을 삭제하시겠습니까?')){
 			$(this).parents('.comment_item').remove();
