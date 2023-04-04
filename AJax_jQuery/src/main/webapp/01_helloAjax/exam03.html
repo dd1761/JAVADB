@@ -17,7 +17,17 @@
 <script type="text/javascript">
 $(function(){
 	$('#mybtn').click(function(){
-		
+		$.ajax({
+			type: 'get',
+			url: '../text/textdata.jsp',
+			data: 'keyword=' + 'Hello AJax', //'keyword=Hello AJax'
+			success: function(data){
+				$('#result').html(data);
+			},
+			error: function(err){
+				alert(err);
+			}
+		});
 	});
 });
 </script>
