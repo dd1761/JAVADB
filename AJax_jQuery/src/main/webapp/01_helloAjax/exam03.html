@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/reset.css">
 </head>
 <body>
-<h1 class="title">$.ajax() 함수를 사용한 HTML 읽기</h1>
+<h1 class="title">$.ajax() 함수를 사용한 텍스트 읽기</h1>
 <div class="exec">
 	<input type="button" value="txt파일 가져오기" id="mybtn" />
 </div>
@@ -17,19 +17,7 @@
 <script type="text/javascript">
 $(function(){
 	$('#mybtn').click(function(){
-		$.ajax({
-			type: 'get',
-			url: '../text/text02.txt',
-			dataType: 'text',
-			success: function(data){
-				$('#result').text(data);
-				//$('#result').html(data);
-				//$('#result').append(data);
-			},
-			error: function(e){
-				console.log(e);
-			}
-		});
+		
 	});
 });
 </script>
