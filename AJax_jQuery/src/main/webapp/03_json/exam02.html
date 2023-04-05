@@ -25,7 +25,20 @@ $(function(){
 			success: function(data){
 				alert(JSON.stringify(data));
 				
-				
+				var subject = data.school.subject;
+				for(var i=0; i < subject.length; i++){
+					var title = subject[i].title;
+					var time = subject[i].time;
+					var teacher = subject[i].teacher;
+					
+					var ul = $('<ul>');
+					var li1 = $('<li>').html(title);
+					var li2 = $('<li>').html(time);
+					var li3 = $('<li>').html(teacher);
+					
+					$('#result').append(ul.append(li1).append(li2).append(li3));
+					$('#result').append('<hr/>')
+				} //for
 			},
 			error: function(err){
 				console.log(err);
