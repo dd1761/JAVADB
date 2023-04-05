@@ -52,7 +52,7 @@ table tbody tr {
 <body>
 
 <!-- 게시판 설명 -->
-<div class="exec"></div>
+<div class="exec"><h1 class="title"></h1></div>
 
 <div class="exec">
 	<!-- 게시물 수 -->
@@ -76,9 +76,32 @@ table tbody tr {
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="../json/jquery.tmpl.min.js"></script>
+
+<!-- 템플릿으로 사용할 HTML 태그 -->
+<script type="text/javascript" id="itemTemplate">
+	<tr>
+		<td class="no">${no}</td>
+		<td class="left subject">${subject}</td>
+		<td class="hit">${hit}</td>
+		<td class="date">${date}</td>
+	</tr>
+</script>
+<!-- 템플릿 끝 -->
+
 <script type="text/javascript">
 $(function(){
-
+	$.get('../json/bbs.json', {}, function(data){
+		$('h1.title').html(data.title);
+		$('div.exec:eq(0)').html(data.description);
+		$('div.exec:eq(1) > span').html(data.total);
+		
+		//item을 담고 있는 배열을 템플릿에 통째로 저장
+		var tmpl = $('#itemTemplate').tmpl(data.item);
+		
+		//화면에 출력
+		$('div.example > table > tbody').append(tmpl);
+	});
 });
 </script>
 </body>
@@ -94,7 +117,7 @@ Template 플러그인과의 연계
    => jquery-tmpl-master.zip 다운로드 받기
      => jquery.tmpl.min.js를 사용하면 된다.
    => 플러그인 참조 코드 추가
-   <script type="text/javascript" src="../js/jquery.tmpl.min.js"></script>
+   <script type="text/javascript" src="../json/jquery.tmpl.min.js"></script>
 
 예)
    {"message" : "Hello Ajax"}
